@@ -1,0 +1,27 @@
+@import "~src/styles.less";
+.navbar{
+    display:flex;
+    position: relative;
+    background: @color-balance;
+    justify-content: space-between;
+    align-items: center;
+    .logo{
+        margin:auto 2vh;
+
+    }
+    ul{
+        display: flex;
+        position: relative;
+        align-items: center;
+        margin: auto 2vh;
+        list-style: none;
+        li{
+            position: relative;
+            margin: 0 1vh;
+            display: block;
+            a:hover{
+                color:@color-light;
+            }
+        }
+    }
+}
