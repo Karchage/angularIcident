@@ -1,0 +1,25 @@
+<div class = "content">
+  <table class="content-table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>DOB</th>
+      <th>Position</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users">
+      <td>{{user.uid}}</td>
+      <td>{{user.name}}</td>
+      <td>{{user.DOB | date:'short'}}</td>
+      <td>{{user.position}}</td>
+      <td><ul>
+        <li>Edit</li>
+        <li>Delete</li></ul></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>
