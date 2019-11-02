@@ -1,0 +1,57 @@
+<div class = "content">
+  <input type="text" placeholder="Find">
+  <button (click)="modal = true" class = "btn">Create new incident</button>
+  <table class="content-table">
+    <thead>
+    <tr>
+      <th>#</th>
+      <th>Name</th>
+      <th>Assignee</th>
+      <th>Area</th>
+      <th>Start Date</th>
+      <th>Due Date</th>
+      <th>Status</th>
+      <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td><img src = "https://image.flaticon.com/icons/svg/321/321828.svg"></td>
+      <td>Incident One</td>
+      <td>Alberto Benati</td>
+      <td>Cake</td>
+      <td>22.01.2019</td>
+      <td>23.01.2019</td>
+      <td>start</td>
+      <td><ul>
+        <li>Actions</li>
+        <li>Actions</li></ul></td>
+    </tr>
+    <tr>
+      <td><img src = "https://image.flaticon.com/icons/svg/321/321828.svg"></td>
+      <td>Incident One</td>
+      <td>Alberto Benati</td>
+      <td>Lorem ipsum dolor sit amet.</td>
+      <td>22.01.2019</td>
+      <td>23.01.2019</td>
+      <td>start</td>
+      <td><ul>
+        <li>Actions</li>
+        <li>Actions</li></ul></td>
+    </tr>
+    <tr>
+      <td><img src = "https://image.flaticon.com/icons/svg/321/321828.svg"></td>
+      <td>Incident One</td>
+      <td>Alberto Benati</td>
+      <td>Cake</td>
+      <td>22.01.2019</td>
+      <td>23.01.2019</td>
+      <td>start</td>
+      <td><ul>
+        <li>Actions</li>
+        <li>Actions</li></ul></td>
+    </tr>
+    </tbody>
+  </table>
+</div>
+<app-new-incidents *ngIf="modal" (close)="modal = false"></app-new-incidents>
