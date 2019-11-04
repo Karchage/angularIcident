@@ -1,6 +1,8 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {StoreModule} from '@ngrx/store';
+import { HttpClientModule} from '@angular/common/http';
+import {EffectsModule} from '@ngrx/effects';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -30,7 +32,9 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     AppRoutingModule,
     FormsModule,
     StoreDevtoolsModule.instrument(),
-    StoreModule.forRoot({})
+    StoreModule.forRoot({}),
+    EffectsModule.forRoot([]),
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]

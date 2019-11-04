@@ -2,7 +2,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import {RouterModule, Routes} from '@angular/router';
 import {StoreModule} from '@ngrx/store';
-import {UserReducer} from '../../store/reducers/user.reducer';
+import {userReducer} from '../../store/reducers/user.reducer';
+import { EffectsModule, Actions} from '@ngrx/effects';
+
+import { UserEffects} from '../../store/effects/user.effects';
+
 
 import { UserComponent } from './user/user.component';
 import { UserAddComponent } from './user-add/user-add.component';
@@ -19,7 +23,8 @@ const userRoutes: Routes = [{path: '', component: UserComponent}];
   imports: [
     CommonModule,
     RouterModule.forChild(userRoutes),
-    StoreModule.forFeature('users', UserReducer)
+    EffectsModule.forFeature([UserEffects]),
+    StoreModule.forFeature('users', userReducer)
   ]
 })
 export class UsersModule { }

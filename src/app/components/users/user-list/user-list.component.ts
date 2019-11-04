@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {Store} from '@ngrx/store';
+import * as userActions from '../../../store/actions/user.action';
 
 @Component({
   selector: 'app-user-list',
@@ -11,7 +12,7 @@ users;
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    this.store.dispatch({type: 'LOAD_USER'});
+    this.store.dispatch(new userActions.LoadUsers());
     this.store.subscribe(state => (this.users = state.users.users));
   }
 
