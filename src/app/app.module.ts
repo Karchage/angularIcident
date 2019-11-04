@@ -11,6 +11,7 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import {FormsModule} from '@angular/forms';
 import { NewIncidentsComponent } from './components/incidents/new-incidents/new-incidents.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 
 
 
@@ -28,6 +29,7 @@ import { RegisterPageComponent } from './components/register-page/register-page.
     BrowserModule,
     AppRoutingModule,
     FormsModule,
+    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({})
   ],
   providers: [],
