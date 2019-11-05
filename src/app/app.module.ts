@@ -1,6 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import {StoreModule} from '@ngrx/store';
+import {StoreDevtoolsModule} from '@ngrx/store-devtools';
 import { HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 
@@ -10,10 +11,10 @@ import { IncidentsComponent } from './components/incidents/incidents.component';
 import { ProcessComponent } from './components/process/process.component';
 import { AuthPageComponent } from './components/auth-page/auth-page.component';
 
-import {FormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import { NewIncidentsComponent } from './components/incidents/new-incidents/new-incidents.component';
 import { RegisterPageComponent } from './components/register-page/register-page.component';
-import {StoreDevtoolsModule} from '@ngrx/store-devtools';
+
 
 
 
@@ -31,10 +32,11 @@ import {StoreDevtoolsModule} from '@ngrx/store-devtools';
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    StoreDevtoolsModule.instrument(),
     StoreModule.forRoot({}),
     EffectsModule.forRoot([]),
-    HttpClientModule
+    StoreDevtoolsModule.instrument(),
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

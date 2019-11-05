@@ -10,14 +10,14 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let user of users">
-      <td>{{user.uid}}</td>
+    <tr *ngFor="let user of users$ | async">
+      <td>{{user.id}}</td>
       <td>{{user.name}}</td>
       <td>{{user.DOB | date:'short'}}</td>
       <td>{{user.position}}</td>
       <td><ul>
-        <li>Edit</li>
-        <li>Delete</li></ul></td>
+        <li><a (click)="editUser(user)">Edit</a></li>
+        <li><a (click)="deleteUser(user)">Delete</a></li></ul></td>
     </tr>
 
     </tbody>

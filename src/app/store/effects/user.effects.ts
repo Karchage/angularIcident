@@ -30,5 +30,72 @@ export class UserEffects {
         catchError(err => of(new userActions.LoadUsersFail(err)))
       )
     )
-  )
+  );
+  @Effect()
+  loadUser$: Observable<Action> = this.actions$.pipe(
+    ofType<userActions.LoadUser>(
+      userActions.UserActionType.LOAD_USER
+    ),
+    mergeMap((action: userActions.LoadUser) =>
+      this.userService.getUserById(action.payload).pipe(
+        map(
+          (user: UserInterface) =>
+            new userActions.LoadUserSuccess(user)
+        ),
+        catchError(err => of(new userActions.LoadUserFail(err)))
+      )
+    )
+  );
+  @Effect()
+  createUser$: Observable<Action> = this.actions$.pipe(
+    ofType<userActions.CreateUser>(
+      userActions.UserActionType.CREATE_USER
+    ),
+    map((action: userActions.CreateUser) => action.payload),
+    mergeMap((user: UserInterface) =>
+      this.userService.createUser(user).pipe(
+        map(
+          (newUser: UserInterface) =>
+            new userActions.CreateUserSuccess(newUser)
+        ),
+        catchError(err => of(new userActions.CreateUserFail(err)))
+      )
+    )
+  );
+
+  @Effect()
+  updateUser$: Observable<Action> = this.actions$.pipe(
+    ofType<userActions.UpdateUser>(
+      userActions.UserActionType.UPDATE_USER
+    ),
+    map((action: userActions.UpdateUser) => action.payload),
+    mergeMap((user: UserInterface) =>
+      this.userService.updateUser(user).pipe(
+        map(
+          (updateUser: UserInterface) =>
+            new userActions.UpdateUserSuccess({
+              id: updateUser.id,
+              changes: updateUser
+            })
+        ),
+        catchError(err => of(new userActions.UpdateUserFail(err)))
+      )
+    )
+  );
+
+  @Effect()
+  deleteUser$: Observable<Action> = this.actions$.pipe(
+    ofType<userActions.DeleteUser>(
+      userActions.UserActionType.DELETE_USER
+    ),
+    map((action: userActions.DeleteUser) => action.payload),
+    mergeMap((id: any) =>
+      this.userService.deleteUser(id).pipe(
+        map(
+          () => new userActions.DeleteUserSuccess(id)
+        ),
+        catchError(err => of(new userActions.DeleteUserFail(err)))
+      )
+    )
+  );
 }

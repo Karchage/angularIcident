@@ -12,6 +12,7 @@ import { UserComponent } from './user/user.component';
 import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 
 
@@ -24,7 +25,8 @@ const userRoutes: Routes = [{path: '', component: UserComponent}];
     CommonModule,
     RouterModule.forChild(userRoutes),
     EffectsModule.forFeature([UserEffects]),
-    StoreModule.forFeature('users', userReducer)
+    StoreModule.forFeature('users', userReducer),
+    ReactiveFormsModule
   ]
 })
 export class UsersModule { }
