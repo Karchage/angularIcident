@@ -1,6 +1,9 @@
-<div>
-  <input type="text">
-  <input type="color">
+<form [formGroup]="addForm" (submit)="add()">
+  <input type="text" formControlName="name">
+  <input type="color" formControlName="color">
+  <select multiple="multiple" formControlName="transition">
+    <option *ngFor="let rul of processAll">{{rul.name}}</option>
+  </select>
   <button type="submit">Create</button>
   <button>Exit</button>
-</div>
+</form>

@@ -1,1 +1,19 @@
-<p>process-list works!</p>
+<div class = "content">
+  <table class="content-table">
+    <thead>
+    <tr>
+      <th>Name</th>
+      <th>Color</th>
+      <th>transition</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let proc of processAll">
+      <td>{{proc.name}}</td>
+      <td>{{proc.color}}</td>
+      <td><li style="color:red" *ngFor="let rul of proc.transition">{{rul}}</li></td>
+    </tr>
+
+    </tbody>
+  </table>
+</div>

@@ -7,6 +7,7 @@ import * as IncidentActions from '../../../store/actions/incident.action';
 import * as fromIncidents from '../../../store/reducers/incident.reducer';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
+import {ProcessInterface} from '../../../interfaces/process.interface';
 
 
 
@@ -18,6 +19,31 @@ import {FormBuilder, FormGroup, Validators} from '@angular/forms';
   styleUrls: ['./incident-detail.component.less']
 })
 export class IncidentDetailComponent implements OnInit {
+
+
+  start: ProcessInterface = {
+    color: 'blue',
+    id: 'start',
+    name: 'start',
+    transition: ['work', 'close']
+
+  };
+  work: ProcessInterface = {
+    color: 'blue',
+    id: 'work',
+    name: 'work',
+    transition: ['close']
+
+  };
+  close: ProcessInterface = {
+    color: 'blue',
+    id: 'close',
+    name: 'close',
+    transition: []
+
+  };
+  processAll: ProcessInterface[] = [this.start, this.work, this.close];
+  curentRul;
   editForm: FormGroup;
   incident$: Observable<IncidentInterface>;
   incident: IncidentInterface;
@@ -35,7 +61,14 @@ export class IncidentDetailComponent implements OnInit {
         status: [this.incident.status, Validators.required],
         icon: [this.incident.icon, Validators.required]
       });
+      for (const inc of this.processAll) {
+
+        if (this.incident.status === inc.name) {
+          this.curentRul = inc.transition;
+        }
+      }
     });
+
   }
 
   editIncident() {

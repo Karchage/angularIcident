@@ -8,6 +8,9 @@
   <input type="date" formControlName="dueDate">
   <input type="color" formControlName="icon">
   <input type = "text" formControlName="description">
-  <input type = "text" formControlName="status">
+  <select formControlName="status">
+    <option *ngFor="let rul of curentRul" [value]="rul">{{rul}}</option>
+  </select>
+  <p>{{incident.status}}</p>
   <button class="btn" type="submit">Edit</button>
 </form>
