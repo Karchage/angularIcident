@@ -1,0 +1,13 @@
+<form [formGroup]="editForm" (submit)="editIncident()">
+  <p>{{incident.id}}</p>
+  <p>{{incident.name}}</p>
+  <input type = "text" formControlName="assignee">
+
+  <p>{{incident.area}}</p>
+  <p>{{incident.startDate | date:'dd/MM/yyyy'}}</p>
+  <input type="date" formControlName="dueDate">
+  <input type="color" formControlName="icon">
+  <input type = "text" formControlName="description">
+  <input type = "text" formControlName="status">
+  <button class="btn" type="submit">Edit</button>
+</form>

@@ -18,7 +18,7 @@ export class UserEditComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<fromUser.AppState>
   ) { }
-  curentUserId: string;
+  curentUserLog: UserInterface;
   ngOnInit() {
     this.edit = this.fb.group({
       name: ['', Validators.required],
@@ -31,9 +31,7 @@ export class UserEditComponent implements OnInit {
 
     users$.subscribe(currentUser => {
       if (currentUser) {
-        console.log('currentUser');
-        console.log(currentUser);
-        this.curentUserId = currentUser.id;
+        this.curentUserLog = currentUser;
         this.edit.patchValue({
           name: currentUser.name,
           DOB: currentUser.DOB,
@@ -44,13 +42,11 @@ export class UserEditComponent implements OnInit {
   }
   updateUser() {
     const updatedUser: UserInterface = {
-      DOB: this.edit.get('DOB').value,
+      DOB: this.curentUserLog.DOB,
       name: this.edit.get('name').value,
       position: this.edit.get('position').value,
-      id: this.curentUserId
+      id: this.curentUserLog.id
     };
-    console.log('updateCompUser');
-    console.log(updatedUser);
     this.store.dispatch(new usersActions.UpdateUser(updatedUser));
   }
 

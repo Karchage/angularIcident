@@ -1,4 +1,6 @@
 import {Action} from '@ngrx/store';
+import {IncidentInterface} from '../../interfaces/incident.interface';
+import {Update} from '@ngrx/entity';
 
 
 export enum IncidentActionType {
@@ -23,49 +25,63 @@ export class LoadIncidents implements Action {
 }
 export class LoadIncidentsSuccess implements Action {
   readonly type = IncidentActionType.LOAD_INCIDENTS_SUCCESS;
+  constructor(public payload: IncidentInterface[]) {}
 }
 export class LoadIncidentsFail implements Action {
   readonly type = IncidentActionType.LOAD_INCIDENTS_FAIL;
+  constructor(public payload: string) {}
 }
 
 export class LoadIncident implements Action {
   readonly type = IncidentActionType.LOAD_INCIDENT;
+  constructor(public payload: string) {}
 }
 export class LoadIncidentSuccess implements Action {
   readonly type = IncidentActionType.LOAD_INCIDENT_SUCCESS;
+  constructor(public payload: IncidentInterface) {}
 }
 export class LoadIncidentFail implements Action {
   readonly type = IncidentActionType.LOAD_INCIDENT_FAIL;
+  constructor(public payload: string) {}
 }
 
 export class CreateIncident implements Action {
   readonly type = IncidentActionType.CREATE_INCIDENT;
+  constructor(public payload: IncidentInterface) {}
 }
 export class CreateIncidentSuccess implements Action {
   readonly type = IncidentActionType.CREATE_INCIDENT_SUCCESS;
+  constructor(public payload: IncidentInterface) {}
 }
 export class CreateIncidentFail implements Action {
   readonly type = IncidentActionType.CREATE_INCIDENT_FAIL;
+  constructor(public payload: string) {}
 }
 
 export class UpdateIncident implements Action {
   readonly type = IncidentActionType.UPDATE_INCIDENT;
+  constructor(public payload: IncidentInterface) {}
 }
 export class UpdateIncidentSuccess implements Action {
   readonly type = IncidentActionType.UPDATE_INCIDENT_SUCCESS;
+  constructor(public payload: Update<IncidentInterface>) {}
 }
 export class UpdateIncidentFail implements Action {
   readonly type = IncidentActionType.UPDATE_INCIDENT_FAIL;
+  constructor(public payload: string) {}
 }
 
 export class DeleteIncident implements Action {
   readonly type = IncidentActionType.DELETE_INCIDENT;
+  constructor(public payload: string) {}
 }
 export class DeleteIncidentSuccess implements Action {
   readonly type = IncidentActionType.DELETE_INCIDENT_SUCCESS;
+  constructor(public payload: string) {}
 }
 export class DeleteIncidentFail implements Action {
   readonly type = IncidentActionType.DELETE_INCIDENT_FAIL;
+  constructor(public payload: string) {}
 }
 
 export type Action =

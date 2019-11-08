@@ -3,6 +3,8 @@ import * as fromRoot from '../../store/state/app.state';
 import * as UserActions from '../actions/user.action';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
+import {IncidentState} from './incident.reducer';
+
 
 export interface UserState extends EntityState<UserInterface> {
   selectedUserId: string | null;
@@ -11,8 +13,11 @@ export interface UserState extends EntityState<UserInterface> {
   error: string;
 }
 
+
+
 export interface AppState extends fromRoot.AppState {
   users: UserState;
+  incidents: IncidentState;
 }
 
 export const userAdapter: EntityAdapter<UserInterface> = createEntityAdapter<UserInterface>();

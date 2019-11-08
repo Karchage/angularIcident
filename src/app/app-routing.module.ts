@@ -1,15 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import {IncidentsComponent} from './components/incidents/incidents.component';
-import {ProcessComponent} from './components/process/process.component';
 import {AuthPageComponent} from './components/auth-page/auth-page.component';
+import {RegisterPageComponent} from './components/register-page/register-page.component';
 
 
 const routes: Routes = [
-  {path: 'incidents', component: IncidentsComponent},
-  {path: 'process', component: ProcessComponent},
+  {path: 'incidents', loadChildren: '../app/components/incidents/incidents.module#IncidentsModule'},
+  {path: 'process', loadChildren: '../app/components/process/process.module#ProcessModule'},
   {path: 'users', loadChildren: '../app/components/users/users.module#UsersModule'},
-  {path: 'auth', component: AuthPageComponent}
+  {path: 'auth', component: AuthPageComponent},
+  {path: 'register', component: RegisterPageComponent}
   ];
 
 @NgModule({

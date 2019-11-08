@@ -21,7 +21,7 @@ export class UserEffects {
     ofType<userActions.LoadUsers>(
       userActions.UserActionType.LOAD_USERS
     ),
-    mergeMap((actions: userActions.LoadUsers) =>
+    mergeMap((action: userActions.LoadUsers) =>
       this.userService.getUsers().pipe(
         map(
           (users: UserInterface[]) =>

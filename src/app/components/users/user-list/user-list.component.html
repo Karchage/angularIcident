@@ -13,7 +13,7 @@
     <tr *ngFor="let user of users$ | async">
       <td>{{user.id}}</td>
       <td>{{user.name}}</td>
-      <td>{{user.DOB | date:'short'}}</td>
+      <td>{{user.DOB | date:'dd/MM/yyyy'}}</td>
       <td>{{user.position}}</td>
       <td><ul>
         <li><a (click)="editUser(user)">Edit</a></li>

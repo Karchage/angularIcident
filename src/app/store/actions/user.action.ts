@@ -77,7 +77,7 @@ export class DeleteUser implements Action {
 }
 export class DeleteUserSuccess implements Action {
   readonly type = UserActionType.DELETE_USER_SUCCESS;
-  constructor(public payload: number) {}
+  constructor(public payload: string) {}
 }
 export class DeleteUserFail implements Action {
   readonly type = UserActionType.DELETE_USER_FAIL;
