@@ -1,7 +1,10 @@
 <form [formGroup]="editForm" (submit)="editIncident()">
   <p>{{incident.id}}</p>
   <p>{{incident.name}}</p>
-  <input type = "text" formControlName="assignee">
+  <p>{{incident.assignee}}</p>
+  <select  formControlName="assignee">
+    <option *ngFor="let user of users$ | async" [value]="user.name">{{user.name}}</option>
+  </select>
 
   <p>{{incident.area}}</p>
   <p>{{incident.startDate | date:'dd/MM/yyyy'}}</p>
@@ -12,5 +15,6 @@
     <option *ngFor="let rul of curentRul" [value]="rul">{{rul}}</option>
   </select>
   <p>{{incident.status}}</p>
+  <p>{{incident.priority}}</p>
   <button class="btn" type="submit">Edit</button>
 </form>

@@ -8,6 +8,10 @@ import * as fromIncidents from '../../../store/reducers/incident.reducer';
 import {ActivatedRoute} from '@angular/router';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {ProcessInterface} from '../../../interfaces/process.interface';
+import * as ProcessAcrions from '../../../store/actions/process.action';
+import * as fromProcesses from '../../../store/reducers/process.reducer';
+import {UserInterface} from '../../../interfaces/user.interface';
+import * as userActions from '../../../store/actions/user.action';
 
 
 
@@ -20,39 +24,21 @@ import {ProcessInterface} from '../../../interfaces/process.interface';
 })
 export class IncidentDetailComponent implements OnInit {
 
-
-  start: ProcessInterface = {
-    color: 'blue',
-    id: 'start',
-    name: 'start',
-    transition: ['work', 'close']
-
-  };
-  work: ProcessInterface = {
-    color: 'blue',
-    id: 'work',
-    name: 'work',
-    transition: ['close']
-
-  };
-  close: ProcessInterface = {
-    color: 'blue',
-    id: 'close',
-    name: 'close',
-    transition: []
-
-  };
-  processAll: ProcessInterface[] = [this.start, this.work, this.close];
   curentRul;
   editForm: FormGroup;
   incident$: Observable<IncidentInterface>;
+  processes$: Observable<ProcessInterface[]>;
+  users$: Observable<UserInterface[]>;
   incident: IncidentInterface;
   constructor(private store: Store<fromUser.AppState>, private router: ActivatedRoute, private fb: FormBuilder ) { }
 
   ngOnInit() {
+    this.store.dispatch(new userActions.LoadUsers());
+    this.users$ = this.store.pipe(select(fromUser.getUsers));
     this.store.dispatch(new IncidentActions.LoadIncident(this.router.snapshot.params.id));
     this.incident$ = this.store.pipe(select(fromIncidents.getCurrentIncident));
     this.incident$.subscribe(response => {
+
       this.incident = {...response};
       this.editForm = this.fb.group({
         dueDate: [this.incident.dueDate, Validators.required],
@@ -61,14 +47,21 @@ export class IncidentDetailComponent implements OnInit {
         status: [this.incident.status, Validators.required],
         icon: [this.incident.icon, Validators.required]
       });
-      for (const inc of this.processAll) {
-
-        if (this.incident.status === inc.name) {
-          this.curentRul = inc.transition;
+    });
+    this.store.dispatch(new ProcessAcrions.LoadProcesses());
+    this.processes$ = this.store.pipe(select(fromProcesses.getProcesses));
+    this.processes$.subscribe(response => {
+      if (response) {
+        for (const inc of response) {
+          console.log(inc.name);
+          if (this.incident.status === inc.name) {
+            this.curentRul = inc.transition;
+            console.log(inc.transition);
+          }
         }
       }
-    });
 
+    });
   }
 
   editIncident() {

@@ -19,7 +19,6 @@ export class IncidentsService {
   getIncidents(): Observable<IncidentInterface[]> {
     return this.http.get<IncidentInterface[]>(`${environment.fbDbUrl}/incidents.json`).pipe(
       map((response: {[key: string]: any}) => {
-        console.log(response);
         return Object
           .keys(response)
           .map( key => ({
@@ -36,11 +35,8 @@ export class IncidentsService {
   }
 
   createIncident(payload: IncidentInterface): Observable<IncidentInterface> {
-    console.log('patch')
     return this.http.patch(`${environment.fbDbUrl}/incidents/${payload.id}.json`, payload).pipe(
       map((response: IncidentInterface) => {
-        console.log(response);
-        console.log(response.id);
         return {
           ...payload,
           id: response.id,
@@ -50,12 +46,10 @@ export class IncidentsService {
       }));
   }
   createIncidentNew(payload: IncidentInterface): Observable<ResponseInterface> {
-    console.log('post')
     return this.http.post<ResponseInterface>(`${environment.fbDbUrl}/incidents.json`, payload);
   }
 
   updateIncident(incident: IncidentInterface): Observable<IncidentInterface> {
-    console.log('Update incident');
     return this.http.patch<IncidentInterface>(`${environment.fbDbUrl}/incidents/${incident.id}.json`, incident);
   }
 

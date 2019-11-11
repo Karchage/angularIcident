@@ -8,7 +8,7 @@
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let proc of processAll">
+    <tr *ngFor="let proc of processes$ | async">
       <td>{{proc.name}}</td>
       <td>{{proc.color}}</td>
       <td><li style="color:red" *ngFor="let rul of proc.transition">{{rul}}</li></td>

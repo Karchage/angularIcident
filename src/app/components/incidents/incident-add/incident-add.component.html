@@ -2,14 +2,23 @@
 <div class="modal">
   <form [formGroup]="addForm" (submit)="addNewIncident()">
     <input type="text" placeholder="Name" formControlName="name">
-    <select  formControlName="assignee">
+    <label for="assignee">Select Assignee</label>
+    <select id="assignee"  formControlName="assignee">
       <option *ngFor="let user of users$ | async" [value]="user.name">{{user.name}}</option>
     </select>
-    <input type="text" placeholder="Area" formControlName="area">
+    <label for="area">Select Area</label>
+    <input type="text" placeholder="Area" formControlName="area" id="area">
     <div>{{nowDate | date:'dd.MM.yyyy'}}</div>
     <input type="date" placeholder="Due Date" formControlName="dueDate">
     <input type="text" placeholder="Description" formControlName="description">
-    <input type="text" placeholder="Priority" formControlName="priority">
+    <label for="priority">Select Priority</label>
+    <select id="priority"  formControlName="priority" >
+      <option>Blocker</option>
+      <option>Critical</option>
+      <option>Major</option>
+      <option>Normal</option>
+      <option>Minor</option>
+    </select>
     <svg [ngClass] = "{
       red: addForm.get('status').value == 'work',
       green: addForm.get('status').value == 'start'

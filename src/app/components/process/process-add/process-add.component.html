@@ -2,7 +2,7 @@
   <input type="text" formControlName="name">
   <input type="color" formControlName="color">
   <select multiple="multiple" formControlName="transition">
-    <option *ngFor="let rul of processAll">{{rul.name}}</option>
+    <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
   </select>
   <button type="submit">Create</button>
   <button>Exit</button>

@@ -1,10 +1,7 @@
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
 import * as IncidentActions from '../actions/incident.action';
-
 import {IncidentInterface} from '../../interfaces/incident.interface';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
-import * as fromRoot from '../state/app.state';
-import {UserState} from './user.reducer';
 
 
 

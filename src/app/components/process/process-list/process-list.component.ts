@@ -1,5 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import {ProcessInterface} from '../../../interfaces/process.interface';
+import {ProcessService} from '../../../services/process.service';
+import {Observable} from 'rxjs';
+import {select, Store} from '@ngrx/store';
+import * as fromUser from '../../../store/reducers/user.reducer';
+import * as ProcessAcrions from '../../../store/actions/process.action';
+import * as fromProcesses from '../../../store/reducers/process.reducer';
 
 @Component({
   selector: 'app-process-list',
@@ -9,31 +15,13 @@ import {ProcessInterface} from '../../../interfaces/process.interface';
 
 
 export class ProcessListComponent implements OnInit {
-  start: ProcessInterface = {
-    color: 'blue',
-    id: 'start',
-    name: 'start',
-    transition: ['work', 'close']
 
-  };
-  work: ProcessInterface = {
-    color: 'blue',
-    id: 'work',
-    name: 'work',
-    transition: ['close']
-
-  };
-  close: ProcessInterface = {
-    color: 'blue',
-    id: 'close',
-    name: 'close',
-    transition: []
-
-  };
-  processAll: ProcessInterface[] = [this.start, this.work, this.close];
-  constructor() { }
+  processes$: Observable<ProcessInterface[]>;
+  constructor(private store: Store<fromUser.AppState>) { }
 
   ngOnInit() {
+    this.store.dispatch(new ProcessAcrions.LoadProcesses());
+    this.processes$ = this.store.pipe(select(fromProcesses.getProcesses));
   }
 
 }

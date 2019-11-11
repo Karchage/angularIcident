@@ -50,8 +50,6 @@ export class UserService {
 
 
   updateUser(user: UserInterface): Observable<UserInterface> {
-    console.log('udpateUser');
-    console.log(user.id);
     return this.http.patch<UserInterface>(`${environment.fbDbUrl}/users/${user.id}.json`, user);
   }
 

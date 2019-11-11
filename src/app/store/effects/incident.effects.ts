@@ -6,8 +6,6 @@ import {Action} from '@ngrx/store';
 import * as incidentActions from '../actions/incident.action';
 import {catchError, map, mergeMap} from 'rxjs/operators';
 import {IncidentInterface} from '../../interfaces/incident.interface';
-import * as userActions from '../actions/user.action';
-import {UserInterface} from '../../interfaces/user.interface';
 
 @Injectable()
 export class IncidentEffects {
