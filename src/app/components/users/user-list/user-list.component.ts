@@ -27,7 +27,6 @@ export class UserListComponent implements OnInit {
   deleteUser(user: UserInterface) {
     if (confirm('Sure ?')) {
       this.store.dispatch(new userActions.DeleteUser(user.id));
-
     }
   }
 }

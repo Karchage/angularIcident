@@ -12,6 +12,8 @@ import * as ProcessAcrions from '../../../store/actions/process.action';
 import * as fromProcesses from '../../../store/reducers/process.reducer';
 import {UserInterface} from '../../../interfaces/user.interface';
 import * as userActions from '../../../store/actions/user.action';
+import {isNotNullOrUndefined} from 'codelyzer/util/isNotNullOrUndefined';
+import {CustomValidators} from '../../../customValidators';
 
 
 
@@ -24,7 +26,7 @@ import * as userActions from '../../../store/actions/user.action';
 })
 export class IncidentDetailComponent implements OnInit {
 
-  curentRul;
+  curentRul = [];
   editForm: FormGroup;
   incident$: Observable<IncidentInterface>;
   processes$: Observable<ProcessInterface[]>;
@@ -38,29 +40,26 @@ export class IncidentDetailComponent implements OnInit {
     this.store.dispatch(new IncidentActions.LoadIncident(this.router.snapshot.params.id));
     this.incident$ = this.store.pipe(select(fromIncidents.getCurrentIncident));
     this.incident$.subscribe(response => {
-
       this.incident = {...response};
       this.editForm = this.fb.group({
-        dueDate: [this.incident.dueDate, Validators.required],
-        assignee: [this.incident.assignee, Validators.required],
+        dueDate: [this.incident.dueDate, [Validators.required, CustomValidators.dueDateValidator]],
+        assignee: [this.incident.assignee],
         description: [this.incident.description, Validators.required],
         status: [this.incident.status, Validators.required],
-        icon: [this.incident.icon, Validators.required]
+        icon: [this.incident.icon]
       });
     });
     this.store.dispatch(new ProcessAcrions.LoadProcesses());
     this.processes$ = this.store.pipe(select(fromProcesses.getProcesses));
-    this.processes$.subscribe(response => {
-      if (response) {
-        for (const inc of response) {
-          console.log(inc.name);
+    this.processes$.subscribe(responseProc => {
+      if (responseProc) {
+        for (const inc of responseProc) {
           if (this.incident.status === inc.name) {
             this.curentRul = inc.transition;
             console.log(inc.transition);
-          }
+          } else { this.curentRul = []; }
         }
       }
-
     });
   }
 

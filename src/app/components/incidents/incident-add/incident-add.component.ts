@@ -8,6 +8,7 @@ import {IncidentsService} from '../../../services/incidents.service';
 import * as userActions from '../../../store/actions/user.action';
 import {Observable} from 'rxjs';
 import {UserInterface} from '../../../interfaces/user.interface';
+import {CustomValidators} from '../../../customValidators';
 
 @Component({
   selector: 'app-incident-add',
@@ -29,13 +30,13 @@ export class IncidentAddComponent implements OnInit {
     this.users$ = this.store.pipe(select(fromUser.getUsers));
     this.addForm = this.fb.group({
       name: ['', Validators.required],
-      assignee: ['', Validators.required],
+      assignee: [''],
       area: ['', Validators.required],
-      startDate: [this.nowDate, Validators.required],
-      dueDate: ['', Validators.required],
+      startDate: [this.nowDate],
+      dueDate: ['', [Validators.required, CustomValidators.dueDateValidator]],
       description: ['', Validators.required],
       priority: ['', Validators.required],
-      icon: ['', Validators.required],
+      icon: [''],
       status: ['', Validators.required]
     });
   }

@@ -27,9 +27,9 @@ export class ProcessAddComponent implements OnInit {
     this.processes$ = this.store.pipe(select(fromProcesses.getProcesses));
     this.addForm = this.fb.group({
       name: ['', Validators.required],
-      id: ['', Validators.required],
+      id: [''],
       color: ['', Validators.required],
-      transition: ['', Validators.required],
+      transition: [''],
     });
   }
 
@@ -42,7 +42,6 @@ export class ProcessAddComponent implements OnInit {
     };
 
     // tslint:disable-next-line:no-unused-expression
-    this.service.createProcess(newProc).subscribe(response => console.log(response));
-    console.log(newProc);
+    this.addForm.reset();
   }
 }

@@ -11,10 +11,10 @@
   <input type="date" formControlName="dueDate">
   <input type="color" formControlName="icon">
   <input type = "text" formControlName="description">
-  <select formControlName="status">
+  <select formControlName="status"  *ngIf="curentRul.length != 0" >
     <option *ngFor="let rul of curentRul" [value]="rul">{{rul}}</option>
   </select>
   <p>{{incident.status}}</p>
   <p>{{incident.priority}}</p>
-  <button class="btn" type="submit">Edit</button>
+  <button class="btn" type="submit" [disabled]="editForm.invalid">Edit</button>
 </form>

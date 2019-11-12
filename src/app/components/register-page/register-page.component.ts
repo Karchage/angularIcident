@@ -7,6 +7,7 @@ import * as fromUser from '../../store/reducers/user.reducer';
 import * as userActions from '../../store/actions/user.action';
 import {RegInterface} from '../../interfaces/userReg.interface';
 import {AuthService} from '../../services/auth.service';
+import {CustomValidators} from '../../customValidators';
 
 
 @Component({
@@ -27,10 +28,10 @@ export class RegisterPageComponent implements OnInit {
   ngOnInit() {
 
     this.userRegForm = this.fb.group({
-      email:  ['', Validators.required],
-      password:  ['', Validators.required],
-      name: ['', Validators.required],
-      DOB: ['', Validators.required],
+      email:  ['', [Validators.required, Validators.email]],
+      password:  ['', [Validators.required, Validators.minLength(6)]],
+      name: ['', [Validators.required, CustomValidators.checkNumberInName]],
+      DOB: ['', Validators.required, CustomValidators.dueDateValidator],
       position: ['', Validators.required],
     });
   }

@@ -5,7 +5,6 @@ import * as fromUser from '../../../store/reducers/user.reducer';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {UserInterface} from '../../../interfaces/user.interface';
-import {getCurrentUser} from '../../../store/reducers/user.reducer';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
@@ -18,7 +17,7 @@ export class UserEditComponent implements OnInit {
     private fb: FormBuilder,
     private store: Store<fromUser.AppState>
   ) { }
-  curentUserLog: UserInterface;
+  currentUserLog: UserInterface;
   ngOnInit() {
     this.edit = this.fb.group({
       name: ['', Validators.required],
@@ -31,7 +30,7 @@ export class UserEditComponent implements OnInit {
 
     users$.subscribe(currentUser => {
       if (currentUser) {
-        this.curentUserLog = currentUser;
+        this.currentUserLog = currentUser;
         this.edit.patchValue({
           name: currentUser.name,
           DOB: currentUser.DOB,
@@ -42,10 +41,10 @@ export class UserEditComponent implements OnInit {
   }
   updateUser() {
     const updatedUser: UserInterface = {
-      DOB: this.curentUserLog.DOB,
+      DOB: this.currentUserLog.DOB,
       name: this.edit.get('name').value,
       position: this.edit.get('position').value,
-      id: this.curentUserLog.id
+      id: this.currentUserLog.id
     };
     this.store.dispatch(new usersActions.UpdateUser(updatedUser));
   }

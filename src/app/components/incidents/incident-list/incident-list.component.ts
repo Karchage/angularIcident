@@ -16,6 +16,7 @@ import * as fromProcesses from '../../../store/reducers/process.reducer';
   styleUrls: ['./incident-list.component.less']
 })
 export class IncidentListComponent implements OnInit {
+  search = '';
   incidents$: Observable<IncidentInterface[]>;
   processes$: Observable<ProcessInterface[]>;
   modal = false;

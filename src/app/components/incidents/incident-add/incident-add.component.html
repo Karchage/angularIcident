@@ -7,7 +7,12 @@
       <option *ngFor="let user of users$ | async" [value]="user.name">{{user.name}}</option>
     </select>
     <label for="area">Select Area</label>
-    <input type="text" placeholder="Area" formControlName="area" id="area">
+    <select id="area"  formControlName="area" >
+      <option>Sales department</option>
+      <option>It department</option>
+      <option>Cooking department</option>
+      <option>Accounting department</option>
+    </select>
     <div>{{nowDate | date:'dd.MM.yyyy'}}</div>
     <input type="date" placeholder="Due Date" formControlName="dueDate">
     <input type="text" placeholder="Description" formControlName="description">
@@ -66,7 +71,7 @@
       <option>need info</option>
       <option>close</option>
     </select>
-    <button class="btn" type = "submit">Create</button>
+    <button class="btn" type = "submit" [disabled]="addForm.invalid">Create</button>
     <button class="btn" (click)="closeEvent.emit()">Exit</button>
   </form>
 </div>

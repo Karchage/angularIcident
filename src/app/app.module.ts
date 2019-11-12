@@ -13,6 +13,7 @@ import { AuthPageComponent } from './components/auth-page/auth-page.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import { SearchIncidentPipe } from './pipes/search-incident.pipe';
 
 
 
@@ -22,7 +23,8 @@ import { RegisterPageComponent } from './components/register-page/register-page.
   declarations: [
     AppComponent,
     AuthPageComponent,
-    RegisterPageComponent
+    RegisterPageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -35,6 +37,8 @@ import { RegisterPageComponent } from './components/register-page/register-page.
     ReactiveFormsModule
   ],
   providers: [],
+  exports: [
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

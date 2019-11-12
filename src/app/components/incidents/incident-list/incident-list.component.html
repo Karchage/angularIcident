@@ -1,5 +1,5 @@
 <div class = "content">
-  <input type="text" placeholder="Find">
+  <input type="text" placeholder="Find" [(ngModel)]="search">
   <button (click)="modal = true" class = "btn">Create new incident</button>
   <table class="content-table">
     <thead>
@@ -11,18 +11,10 @@
       <th>Start Date</th>
       <th>Due Date</th>
       <th>Status</th>
-      <th>Actions</th>
     </tr>
     </thead>
     <tbody>
-    <tr *ngFor="let incident of incidents$ |async" (click)="selectIncident(incident.id)" >
-<!--      <td><img src = "https://image.flaticon.com/icons/svg/321/321828.svg"></td>-->
-<!--      <td>Incident One</td>-->
-<!--      <td>Alberto Benati</td>-->
-<!--      <td>Cake</td>-->
-<!--      <td>22.01.2019</td>-->
-<!--      <td>23.01.2019</td>-->
-<!--      <td>start</td>-->
+    <tr *ngFor="let incident of incidents$ | async | searchIncident:search" (click)="selectIncident(incident.id)" >
 
       <td><svg [ngStyle]="{fill: incident.icon}" version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
                 viewBox="0 0 64 64" enable-background="new 0 0 64 64" xml:space="preserve">
@@ -68,10 +60,6 @@
       <td>{{incident.startDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{incident.dueDate | date: 'dd/MM/yyyy'}}</td>
       <td>{{incident.status}}</td>
-      <td><ul>
-        <li>Actions</li>
-        <li>Actions</li></ul></td>
-    </tr>
     </tbody>
   </table>
 </div>
