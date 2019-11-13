@@ -1,0 +1,48 @@
+@import "~src/color";
+
+
+form {
+  margin: 25px;
+  padding: 1rem;
+  position: relative;
+  border: 1px @color-balance solid;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+.wrapper{
+  display: flex;
+  margin-bottom: 0.5rem;
+  align-items: center;
+  border-bottom: 1px @color-balance solid;
+  box-sizing: border-box;
+  label{
+    width: 25%;
+  }
+  input, div,
+  select{
+    width:75%;
+    font-size: 1.2rem;
+    padding: 0.4rem;
+  }
+  input{
+    margin-bottom: 0.4rem;
+  }
+  .secondWrapper{
+    display: flex;
+    div{
+      width:30%;
+      padding: 0.4rem 0;
+    ;
+    }
+    select{
+      width:70%;
+    }
+  }
+}
+.btn-wrap{
+  border: none;
+  .btn{
+    margin-left: 50%;
+    transform: translate(-50%,0);
+  }
+}

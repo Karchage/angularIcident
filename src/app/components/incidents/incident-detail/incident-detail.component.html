@@ -1,20 +1,66 @@
 <form [formGroup]="editForm" (submit)="editIncident()">
-  <p>{{incident.id}}</p>
-  <p>{{incident.name}}</p>
-  <p>{{incident.assignee}}</p>
-  <select  formControlName="assignee">
+
+  <div class="wrapper">
+  <label for="id">Id</label>
+  <div id="id">{{incident.id}}</div>
+  </div>
+
+  <div class="wrapper">
+  <label for="name">Name</label>
+  <div id="name">{{incident.name}}</div>
+  </div>
+
+  <div class="wrapper">
+  <label for="assignee">Assignee</label>
+    <div class="secondWrapper">
+  <div>{{incident.assignee}}</div>
+  <select id="assignee"  formControlName="assignee">
     <option *ngFor="let user of users$ | async" [value]="user.name">{{user.name}}</option>
   </select>
+    </div>
+  </div>
 
-  <p>{{incident.area}}</p>
-  <p>{{incident.startDate | date:'dd/MM/yyyy'}}</p>
-  <input type="date" formControlName="dueDate">
-  <input type="color" formControlName="icon">
-  <input type = "text" formControlName="description">
-  <select formControlName="status"  *ngIf="curentRul.length != 0" >
-    <option *ngFor="let rul of curentRul" [value]="rul">{{rul}}</option>
+  <div class="wrapper">
+  <label for="area">Area</label>
+  <div id="area">{{incident.area}}</div>
+  </div>
+
+  <div class="wrapper">
+  <label for="startDate">Start Date</label>
+  <div id="startDate">{{incident.startDate | date:'dd/MM/yyyy'}}</div>
+  </div>
+
+  <div class="wrapper">
+  <label for="dueDate">Due Date</label>
+    <div>{{incident.dueDate}}</div>
+  <input id="dueDate" type="date" formControlName="dueDate">
+  </div>
+
+
+  <div class="wrapper">
+  <label for="description">Description</label>
+  <input id="description" type = "text" formControlName="description">
+  </div>
+
+  <div class="wrapper">
+  <label for="status">Status</label>
+    <div class="secondWrapper">
+  <div>{{incident.status}}</div>
+  <select id="status" formControlName="status" >
+    <option *ngFor="let rul of currentRul" [value]="rul">{{rul}}</option>
   </select>
-  <p>{{incident.status}}</p>
-  <p>{{incident.priority}}</p>
+    </div>
+  </div>
+
+
+  <div class="wrapper">
+  <label for="priority">Priority</label>
+  <div id="priority">{{incident.priority}}</div>
+  </div>
+
+
+  <div class="wrapper btn-wrap">
   <button class="btn" type="submit" [disabled]="editForm.invalid">Edit</button>
+  </div>
 </form>
+

@@ -1,9 +1,25 @@
-<form [formGroup]="addForm" (submit)="add()">
-  <input type="text" formControlName="name">
-  <input type="color" formControlName="color">
-  <select multiple="multiple" formControlName="transition">
-    <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
-  </select>
-  <button type="submit" [disabled]="addForm.invalid">Create</button>
-  <button>Exit</button>
-</form>
+<div class="backdrop"></div>
+<div class="modal">
+  <form [formGroup]="addForm" (submit)="add()">
+    <div class="wrapper">
+      <label for="name">Name</label>
+      <input id="name" type="text" formControlName="name">
+    </div>
+
+    <div class="wrapper">
+      <label for="color">Color</label>
+      <input id = "color" type="color" formControlName="color">
+    </div>
+
+    <div class="wrapper">
+      <label for="transition">Transition</label>
+      <select id="transition" multiple="multiple" formControlName="transition">
+        <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
+      </select>
+    </div>
+    <div class="wrap-btn">
+      <button class="btn" type="submit" [disabled]="addForm.invalid">Create</button>
+      <button class="btn" (click)="closeEvent.emit()">Exit</button>
+    </div>
+  </form>
+</div>

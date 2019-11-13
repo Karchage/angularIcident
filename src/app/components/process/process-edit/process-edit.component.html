@@ -1,1 +1,28 @@
-<p>process-edit works!</p>
+<div class="backdrop"></div>
+<div class="modal">
+  <form [formGroup]="edit" (submit)="updateProcess()">
+    <div class="wrapper">
+      <label for="Name">Name</label>
+      <input id="Name" type="text" formControlName="name">
+    </div>
+
+    <div class="wrapper">
+      <label for="Color">Color</label>
+      <input id = "Color" type="color" formControlName="color">
+    </div>
+
+    <div class="wrapper">
+      <label for="Transition">Transition</label>
+      <div class="secondWrapper">
+        <textarea rows="10" name="text" disabled style="resize: none">{{currentProcessLog.transition}}</textarea>
+        <select id="Transition" multiple="multiple" formControlName="newTransition">
+          <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
+        </select>
+      </div>
+    </div>
+    <div class="wrap-btn">
+      <button class="btn" type="submit" [disabled]="addForm.invalid">Create</button>
+      <button class="btn" (click)="closeEvent.emit()">Exit</button>
+    </div>
+  </form>
+</div>

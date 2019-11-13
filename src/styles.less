@@ -1,18 +1,13 @@
 
 @import (css) url('https://fonts.googleapis.com/css?family=Roboto');
 @import (css)url('https://fonts.googleapis.com/css?family=Yeon+Sung&display=swap');
-
-@color-balance: #b14359;
-@color-dark: #5e0943;
-@color-light: #ebe6d9;
-@color-medium:#f4709a ;
-@color-standart: #f0a5c1;
+@import "color";
 
 
 body{
     margin: 0;
-    font-family: Roboto;
-    font-size: 2vh;
+    font-family: Roboto, serif;
+    font-size: 1.2rem;
     color: black;
     a{
         cursor: pointer;
@@ -31,10 +26,9 @@ body{
   overflow: hidden;
   border-radius: 10px;
   thead tr{
-    background-color: #b14359;
-    color: aliceblue;
+    background-color: @color-balance;
+    color: @color-light;
     text-align: left;
-    font-weight: bold;
   }
   th, td{
     padding:12px 15px;
@@ -47,6 +41,7 @@ body{
     display: flex;
     flex-wrap: wrap;
     padding: 0;
+    margin: 0;
     li{
       display: block;
       background-color: #f0a5c1;
@@ -58,20 +53,33 @@ body{
 }
 .btn{
     display: inline-block;
-    background: var(--light-color);
     padding: 0.4rem 1.3rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     border: none;
     cursor: pointer;
-    margin-right: 0.5rem;
     transition: opacity 0.2s ease-in;
     outline: none;
-    background: #5e0943;
+    background: @color-dark;
     color: #ebe6d9;
     border-radius: 25px;
     &:disabled {
       cursor: not-allowed;
-      background: var(--light-color);
-      color: #111;
+      background: @color-light;
+      border: 1px @color-dark solid;
+      color: @color-dark;
+      box-sizing: border-box;
     }
+}
+input[type='text'],
+input[type='email'],
+input[type='password'],
+input[type='date'],
+select,
+textarea {
+  display: block;
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.4rem;
+  font-size: 0.9rem;
+  border: 1px solid #ccc;
 }

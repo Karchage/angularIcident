@@ -22,6 +22,7 @@ export class UserEditComponent implements OnInit {
     this.edit = this.fb.group({
       name: ['', Validators.required],
       DOB: ['', Validators.required],
+      id: ['', Validators.required],
       position: ['', Validators.required]
     });
     const users$: Observable<UserInterface> = this.store.select(
@@ -34,6 +35,7 @@ export class UserEditComponent implements OnInit {
         this.edit.patchValue({
           name: currentUser.name,
           DOB: currentUser.DOB,
+          id: currentUser.id,
           position: currentUser.position,
         });
       }

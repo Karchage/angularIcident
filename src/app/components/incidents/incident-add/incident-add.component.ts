@@ -37,7 +37,7 @@ export class IncidentAddComponent implements OnInit {
       description: ['', Validators.required],
       priority: ['', Validators.required],
       icon: [''],
-      status: ['', Validators.required]
+      status: ['start']
     });
   }
 
@@ -51,7 +51,7 @@ export class IncidentAddComponent implements OnInit {
       description: this.addForm.get('description').value,
       priority: this.addForm.get('priority').value,
       icon: this.addForm.get('icon').value,
-      status: this.addForm.get('status').value,
+      status: 'start',
     };
     this.create.createIncidentNew(newIncident).subscribe(
         response => {console.log(response);

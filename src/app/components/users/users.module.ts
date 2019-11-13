@@ -9,7 +9,6 @@ import { UserEffects} from '../../store/effects/user.effects';
 
 
 import { UserComponent } from './user/user.component';
-import { UserAddComponent } from './user-add/user-add.component';
 import { UserEditComponent } from './user-edit/user-edit.component';
 import { UserListComponent } from './user-list/user-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
@@ -20,7 +19,7 @@ import {ReactiveFormsModule} from '@angular/forms';
 const userRoutes: Routes = [{path: '', component: UserComponent}];
 
 @NgModule({
-  declarations: [UserComponent, UserAddComponent, UserEditComponent, UserListComponent],
+  declarations: [UserComponent, UserEditComponent, UserListComponent],
   imports: [
     CommonModule,
     RouterModule.forChild(userRoutes),

@@ -1,10 +1,27 @@
 <form [formGroup]="userRegForm" (submit)="RegUsers()">
-  <input type="text" placeholder="email" formControlName="email">
-  <input type="text" placeholder="password" formControlName="password">
-  <input type="text" placeholder="name" formControlName="name">
-  <input type="date" placeholder="DOB" formControlName="DOB">
-  <input type="text" placeholder="position" formControlName="position">
-  <button type = "submit" [disabled]="userRegForm.invalid">SignUp</button>
-  <button>Close</button>
+  <div class="wrapper">
+    <label for="email">Email</label>
+    <input id="email" type="text"  formControlName="email">
+  </div>
+  <div class="wrapper">
+    <label for="password">Password</label>
+    <input id="password" type="text" formControlName="password">
+  </div>
+  <div class="wrapper">
+    <label for="name">Name</label>
+    <input id="name" type="text"  formControlName="name">
+  </div>
+  <div class="wrapper">
+    <label for="DOB">Date of birthday</label>
+    <input id="DOB" type="date"  formControlName="DOB">
+  </div>
+  <div class="wrapper">
+    <label for="position">Position</label>
+    <input id="position" type="text"  formControlName="position">
+  </div>
+  <div class="btn-wrap">
+    <button class ="btn" type = "submit" [disabled]="userRegForm.invalid">SignUp</button>
+  </div>
+
 </form>
 

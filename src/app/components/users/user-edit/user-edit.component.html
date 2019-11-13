@@ -1,6 +1,10 @@
-<form [formGroup]="edit" (submit)="updateUser()">
-  <input type="text" placeholder="name" formControlName="name">
-  <input type="text" placeholder="position" formControlName="position">
-  <button type = "submit">Update</button>
-  <button>Close</button>
-</form>
+<div class="editUser">
+  <form [formGroup]="edit" (submit)="updateUser()">
+    <div class="inputs">
+      <input type="text" placeholder="name" formControlName="name">
+      <input type="text" placeholder="position" formControlName="position">
+    </div>
+    <button class="btn" type = "submit" [disabled]="edit.invalid">Update</button>
+  </form>
+</div>
+

@@ -1,13 +1,14 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProcessInterface} from '../../../interfaces/process.interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {UserInterface} from '../../../interfaces/user.interface';
 import {ProcessService} from '../../../services/process.service';
-import * as ProcessAcrions from '../../../store/actions/process.action';
+import * as ProcessActions from '../../../store/actions/process.action';
 import {select, Store} from '@ngrx/store';
 import * as fromProcesses from '../../../store/reducers/process.reducer';
 import {Observable} from 'rxjs';
 import * as fromUser from '../../../store/reducers/user.reducer';
+
 
 @Component({
   selector: 'app-process-add',
@@ -18,12 +19,13 @@ import * as fromUser from '../../../store/reducers/user.reducer';
 // tslint:disable-next-line:class-name
 
 export class ProcessAddComponent implements OnInit {
+  @Output() closeEvent = new EventEmitter<void>();
   addForm: FormGroup;
-  processes$: Observable<ProcessInterface[]>
+  processes$: Observable<ProcessInterface[]>;
   constructor(private fb: FormBuilder, private service: ProcessService, private store: Store<fromUser.AppState>) { }
 
   ngOnInit() {
-    this.store.dispatch(new ProcessAcrions.LoadProcesses());
+    this.store.dispatch(new ProcessActions.LoadProcesses());
     this.processes$ = this.store.pipe(select(fromProcesses.getProcesses));
     this.addForm = this.fb.group({
       name: ['', Validators.required],
@@ -41,7 +43,7 @@ export class ProcessAddComponent implements OnInit {
       transition: this.addForm.get('transition').value
     };
 
-    // tslint:disable-next-line:no-unused-expression
+    this.store.dispatch(new ProcessActions.CreateProcess(newProc));
     this.addForm.reset();
   }
 }
