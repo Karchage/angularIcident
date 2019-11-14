@@ -1,13 +1,14 @@
 import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {ProcessInterface} from '../../../interfaces/process.interface';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {UserInterface} from '../../../interfaces/user.interface';
+
 import {ProcessService} from '../../../services/process.service';
 import * as ProcessActions from '../../../store/actions/process.action';
 import {select, Store} from '@ngrx/store';
 import * as fromProcesses from '../../../store/reducers/process.reducer';
 import {Observable} from 'rxjs';
-import * as fromUser from '../../../store/reducers/user.reducer';
+
+import {AppState} from '../../../store/state/app.state';
 
 
 @Component({
@@ -16,13 +17,13 @@ import * as fromUser from '../../../store/reducers/user.reducer';
   styleUrls: ['./process-add.component.less']
 })
 
-// tslint:disable-next-line:class-name
+
 
 export class ProcessAddComponent implements OnInit {
   @Output() closeEvent = new EventEmitter<void>();
   addForm: FormGroup;
   processes$: Observable<ProcessInterface[]>;
-  constructor(private fb: FormBuilder, private service: ProcessService, private store: Store<fromUser.AppState>) { }
+  constructor(private fb: FormBuilder, private service: ProcessService, private store: Store<AppState>) { }
 
   ngOnInit() {
     this.store.dispatch(new ProcessActions.LoadProcesses());

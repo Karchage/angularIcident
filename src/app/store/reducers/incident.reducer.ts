@@ -44,7 +44,6 @@ export function incidentReducer(state = initialState, action: IncidentActions.Ac
     }
 
     case IncidentActions.IncidentActionType.LOAD_INCIDENT_SUCCESS: {
-      console.log('PAYLOAD IN LOAD INCIDENT', action.payload);
       return incidentAdapter.addOne(action.payload, {
         ...state,
         selectedIncidentId: action.payload.id

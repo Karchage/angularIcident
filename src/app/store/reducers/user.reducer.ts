@@ -1,10 +1,9 @@
 import {UserInterface} from '../../interfaces/user.interface';
-import * as fromRoot from '../../store/state/app.state';
+
 import * as UserActions from '../actions/user.action';
 import {createFeatureSelector, createSelector} from '@ngrx/store';
 import {createEntityAdapter, EntityAdapter, EntityState} from '@ngrx/entity';
-import {IncidentState} from './incident.reducer';
-import {ProcessState} from './process.reducer';
+
 
 
 export interface UserState extends EntityState<UserInterface> {
@@ -16,11 +15,6 @@ export interface UserState extends EntityState<UserInterface> {
 
 
 
-export interface AppState extends fromRoot.AppState {
-  users: UserState;
-  incidents: IncidentState;
-  processes: ProcessState;
-}
 
 export const userAdapter: EntityAdapter<UserInterface> = createEntityAdapter<UserInterface>();
 
@@ -56,7 +50,6 @@ export function userReducer(state = initialState, action: UserActions.Action): U
     }
 
     case UserActions.UserActionType.LOAD_USER_SUCCESS: {
-      console.log('PAYLOAD IN LOAD USER', action.payload);
       return userAdapter.addOne(action.payload, {
         ...state,
         selectedUserId: action.payload.id
@@ -88,17 +81,6 @@ export function userReducer(state = initialState, action: UserActions.Action): U
         error: action.payload
       };
     }
-
-    case UserActions.UserActionType.DELETE_USER_SUCCESS: {
-      return userAdapter.removeOne(action.payload, state);
-    }
-    case UserActions.UserActionType.DELETE_USER_FAIL: {
-      return {
-        ...state,
-        error: action.payload
-      };
-    }
-
     default: {
       return state;
     }

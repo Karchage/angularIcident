@@ -30,14 +30,12 @@ export class UserService {
   }
 
   getUserById(payload: string): Observable<UserInterface> {
-    console.log('Get info user');
-    console.log(payload);
+
     return this.http.get<UserInterface>(`${environment.fbDbUrl}/users/${payload}.json`);
   }
 
   createUser(payload: UserInterface): Observable<UserInterface> {
-    console.log('Create user');
-    console.log(payload);
+
     return this.http.patch(`${environment.fbDbUrl}/users/${payload.id}.json`, payload).pipe(
       map((response: ResponseInterface) => {
         return {
@@ -53,12 +51,5 @@ export class UserService {
     return this.http.patch<UserInterface>(`${environment.fbDbUrl}/users/${user.id}.json`, user);
   }
 
-  deleteUser(payload: string) {
-    const deleteUsr = {
-      idToken: null
-    };
-    console.log(deleteUsr);
-    this.http.post(`https://identitytoolkit.googleapis.com/v1/accounts:delete?key=${environment.apiKey}`, deleteUsr).subscribe();
-    return this.http.delete(`${environment.fbDbUrl}/users/${payload}.json`);
-  }
+
 }

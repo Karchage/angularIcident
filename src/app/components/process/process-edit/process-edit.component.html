@@ -14,14 +14,14 @@
     <div class="wrapper">
       <label for="Transition">Transition</label>
       <div class="secondWrapper">
-        <textarea rows="10" name="text" disabled style="resize: none">{{currentProcessLog.transition}}</textarea>
+        <textarea name="text" disabled>{{currentProcessLog.transition}}</textarea>
         <select id="Transition" multiple="multiple" formControlName="newTransition">
           <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
         </select>
       </div>
     </div>
     <div class="wrap-btn">
-      <button class="btn" type="submit" [disabled]="addForm.invalid">Create</button>
+      <button class="btn" type="submit" [disabled]="edit.invalid">Update</button>
       <button class="btn" (click)="closeEvent.emit()">Exit</button>
     </div>
   </form>

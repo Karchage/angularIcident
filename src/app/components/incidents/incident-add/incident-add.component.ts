@@ -9,6 +9,7 @@ import * as userActions from '../../../store/actions/user.action';
 import {Observable} from 'rxjs';
 import {UserInterface} from '../../../interfaces/user.interface';
 import {CustomValidators} from '../../../customValidators';
+import {AppState} from '../../../store/state/app.state';
 
 @Component({
   selector: 'app-incident-add',
@@ -22,7 +23,7 @@ export class IncidentAddComponent implements OnInit {
   addForm: FormGroup;
 
   constructor(private fb: FormBuilder,
-              private store: Store<fromUser.AppState>,
+              private store: Store<AppState>,
               private create: IncidentsService) { }
 
   ngOnInit() {
@@ -54,7 +55,7 @@ export class IncidentAddComponent implements OnInit {
       status: 'start',
     };
     this.create.createIncidentNew(newIncident).subscribe(
-        response => {console.log(response);
+        response => {
                      newIncident.id = response.name;
                      this.store.dispatch(new incidentActions.CreateIncident(newIncident)); });
     this.addForm.reset();

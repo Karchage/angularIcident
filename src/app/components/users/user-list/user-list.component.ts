@@ -4,6 +4,7 @@ import * as userActions from '../../../store/actions/user.action';
 import * as fromUser from '../../../store/reducers/user.reducer';
 import {UserInterface} from '../../../interfaces/user.interface';
 import {Observable} from 'rxjs';
+import {AppState} from '../../../store/state/app.state';
 
 @Component({
   selector: 'app-user-list',
@@ -12,7 +13,7 @@ import {Observable} from 'rxjs';
 })
 export class UserListComponent implements OnInit {
   users$: Observable<UserInterface[]>;
-  constructor(private store: Store<fromUser.AppState>) { }
+  constructor(private store: Store<AppState>) { }
 
   ngOnInit() {
     this.store.dispatch(new userActions.LoadUsers());
@@ -20,13 +21,6 @@ export class UserListComponent implements OnInit {
   }
 
   editUser(user: UserInterface) {
-    console.log('editUser');
-    console.log(user);
     this.store.dispatch(new userActions.LoadUser(user.id));
-  }
-  deleteUser(user: UserInterface) {
-    if (confirm('Sure ?')) {
-      this.store.dispatch(new userActions.DeleteUser(user.id));
-    }
   }
 }

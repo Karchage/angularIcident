@@ -1,13 +1,14 @@
-import {Component, EventEmitter, OnInit, Output} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {UserInterface} from '../../interfaces/user.interface';
 import {HttpClient} from '@angular/common/http';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {Store} from '@ngrx/store';
-import * as fromUser from '../../store/reducers/user.reducer';
+
 import * as userActions from '../../store/actions/user.action';
 import {RegInterface} from '../../interfaces/userReg.interface';
 import {AuthService} from '../../services/auth.service';
 import {CustomValidators} from '../../customValidators';
+import {AppState} from '../../store/state/app.state';
 
 
 @Component({
@@ -22,7 +23,7 @@ export class RegisterPageComponent implements OnInit {
 
   constructor(private http: HttpClient,
               private fb: FormBuilder,
-              private store: Store<fromUser.AppState>,
+              private store: Store<AppState>,
               private auth: AuthService) { }
 
   ngOnInit() {

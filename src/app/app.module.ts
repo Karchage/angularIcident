@@ -8,12 +8,10 @@ import {EffectsModule} from '@ngrx/effects';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
-import { AuthPageComponent } from './components/auth-page/auth-page.component';
-
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { RegisterPageComponent } from './components/register-page/register-page.component';
-import { SearchIncidentPipe } from './pipes/search-incident.pipe';
+
 
 
 
@@ -22,7 +20,7 @@ import { SearchIncidentPipe } from './pipes/search-incident.pipe';
 @NgModule({
   declarations: [
     AppComponent,
-    AuthPageComponent,
+
     RegisterPageComponent,
 
   ],

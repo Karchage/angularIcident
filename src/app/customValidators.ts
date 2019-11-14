@@ -15,7 +15,6 @@ export class CustomValidators {
   static checkNumberInName(control: FormControl): {[key: string]: boolean} {
     for (const item of control.value) {
       if (isNumeric(item)) {
-        console.log('I see')
         return {
           numberInName: true
         };

@@ -2,13 +2,13 @@ import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IncidentInterface} from '../../../interfaces/incident.interface';
 import {select, Store} from '@ngrx/store';
-import * as fromUser from '../../../store/reducers/user.reducer';
 import * as fromIncidents from '../../../store/reducers/incident.reducer';
 import * as IncidentActions from '../../../store/actions/incident.action';
 import {Router} from '@angular/router';
 import {ProcessInterface} from '../../../interfaces/process.interface';
 import * as ProcessActions from '../../../store/actions/process.action';
 import * as fromProcesses from '../../../store/reducers/process.reducer';
+import {AppState} from '../../../store/state/app.state';
 
 @Component({
   selector: 'app-incident-list',
@@ -20,7 +20,7 @@ export class IncidentListComponent implements OnInit {
   incidents$: Observable<IncidentInterface[]>;
   processes$: Observable<ProcessInterface[]>;
   modal = false;
-  constructor(private store: Store<fromUser.AppState>,
+  constructor(private store: Store<AppState>,
               private route: Router) { }
 
   @Output()

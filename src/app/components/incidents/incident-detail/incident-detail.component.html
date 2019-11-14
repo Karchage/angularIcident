@@ -32,8 +32,11 @@
 
   <div class="wrapper">
   <label for="dueDate">Due Date</label>
-    <div>{{incident.dueDate}}</div>
-  <input id="dueDate" type="date" formControlName="dueDate">
+    <div class="secondWrapper">
+      <div>{{incident.dueDate| date: 'dd-MM-yyyy'}}</div>
+      <input id="dueDate" type="date" formControlName="dueDate" >
+    </div>
+
   </div>
 
 
@@ -59,7 +62,7 @@
   </div>
 
 
-  <div class="wrapper btn-wrap">
+  <div class=" btn-wrap">
   <button class="btn" type="submit" [disabled]="editForm.invalid">Edit</button>
   </div>
 </form>

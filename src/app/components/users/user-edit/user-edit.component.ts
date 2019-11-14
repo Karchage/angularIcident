@@ -5,6 +5,7 @@ import * as fromUser from '../../../store/reducers/user.reducer';
 import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {UserInterface} from '../../../interfaces/user.interface';
+import {AppState} from '../../../store/state/app.state';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
@@ -15,7 +16,7 @@ export class UserEditComponent implements OnInit {
   edit: FormGroup;
   constructor(
     private fb: FormBuilder,
-    private store: Store<fromUser.AppState>
+    private store: Store<AppState>
   ) { }
   currentUserLog: UserInterface;
   ngOnInit() {

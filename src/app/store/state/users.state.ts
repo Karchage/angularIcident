@@ -6,7 +6,3 @@ export interface  IUserInterface {
   selectedUser: UserInterface;
 }
 
-export const initialUserState: IUserInterface = {
-  users: null,
-  selectedUser: null
-}

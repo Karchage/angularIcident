@@ -83,19 +83,5 @@ export class UserEffects {
     )
   );
 
-  @Effect()
-  deleteUser$: Observable<Action> = this.actions$.pipe(
-    ofType<userActions.DeleteUser>(
-      userActions.UserActionType.DELETE_USER
-    ),
-    map((action: userActions.DeleteUser) => action.payload),
-    mergeMap((id: any) =>
-      this.userService.deleteUser(id).pipe(
-        map(
-          () => new userActions.DeleteUserSuccess(id)
-        ),
-        catchError(err => of(new userActions.DeleteUserFail(err)))
-      )
-    )
-  );
+
 }

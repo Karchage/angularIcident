@@ -1,4 +1,4 @@
-import {Component, OnDestroy, OnInit} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {Observable} from 'rxjs';
 import {IncidentInterface} from '../../../interfaces/incident.interface';
 import * as fromUser from '../../../store/reducers/user.reducer';
@@ -13,8 +13,7 @@ import * as fromProcesses from '../../../store/reducers/process.reducer';
 import {UserInterface} from '../../../interfaces/user.interface';
 import * as userActions from '../../../store/actions/user.action';
 import {CustomValidators} from '../../../customValidators';
-
-
+import {AppState} from '../../../store/state/app.state';
 
 
 
@@ -33,11 +32,16 @@ export class IncidentDetailComponent implements OnInit {
   users$: Observable<UserInterface[]>;
   incident: IncidentInterface;
   private newStatus;
-  loading: boolean;
-  constructor(private store: Store<fromUser.AppState>, private router: ActivatedRoute, private fb: FormBuilder ) { }
+  constructor(private store: Store<AppState>, private router: ActivatedRoute, private fb: FormBuilder ) { }
 
   ngOnInit() {
-
+    this.editForm = this.fb.group({
+      dueDate: ['', [Validators.required, CustomValidators.dueDateValidator]],
+      assignee: [''],
+      description: ['', Validators.required],
+      status: ['', Validators.required],
+      icon: ['']
+    });
     this.store.dispatch(new userActions.LoadUsers());
     this.store.dispatch(new IncidentActions.LoadIncident(this.router.snapshot.params.id));
     this.store.dispatch(new ProcessAcrions.LoadProcesses());
@@ -49,75 +53,28 @@ export class IncidentDetailComponent implements OnInit {
       this.processes$.subscribe(responseProc => {
         if (responseProc) {
           for (const inc of responseProc) {
-            if (responseProc.toString().includes(this.incident.status)) {
-            if (this.incident.status === inc.name) {
-              this.incident.icon = inc.color;
-              this.currentRul = inc.transition;
+            if (inc.transition.length !== 0) {
+              if (this.incident.status === inc.name) {
+                this.incident.icon = inc.color;
+                this.currentRul = inc.transition;
+              }
+            } else {
+              this.currentRul = null;
             }
-            } else this.incident.status = 'start';}
-          this.editForm = this.fb.group({
-        dueDate: [this.incident.dueDate, [Validators.required, CustomValidators.dueDateValidator]],
-        assignee: [this.incident.assignee],
-        description: [this.incident.description, Validators.required],
-        status: [this.incident.status, Validators.required],
-        icon: [this.incident.icon]
-      });
+          }
+          this.editForm.patchValue({
+            dueDate: this.incident.dueDate,
+            assignee: this.incident.assignee,
+            description: this.incident.description,
+            status: this.incident.status,
+            icon: this.incident.icon
+          });
+
         }
       });
     });
   }
-  //
-  // private getInfoIncident(loading) {
-  //   const promise = new Promise(function(resolve, reject) {
-  //     this.store.pipe(select(fromIncidents.getCurrentIncident)).subscribe(response => {
-  //       this.incident = {...response};
-  //     });
-  //     if (this.incident) {
-  //       this.loading = true;
-  //       resolve (this.incident);
-  //     } else {
-  //       this.loading = false;
-  //       reject('loading incident error');
-  //     }
-  //   });
-  //   return promise;
-  // }
-  // private getInfoProcess(loading) {
-  //   this.store.pipe(select(fromProcesses.getProcesses)).subscribe(responseProc => {
-  //     console.log('Subscribe on process');
-  //     if (responseProc) {
-  //       for (const inc of responseProc) {
-  //         if (this.incident.status === inc.name) {
-  //           console.log(this.incident.status, ' = ' , inc.name);
-  //           this.incident.icon = inc.color;
-  //           this.currentRul = inc.transition;
-  //           console.log(inc.transition);
-  //         }  }   }
-  //     console.log('rul', this.currentRul);
-  //   });
-  //   if (this.currentRul) {
-  //     return Promise.resolve(this.currentRul);
-  //   } else {
-  //     this.loading = false;
-  //     Promise.reject('loading process error');
-  //   }
-  // }
-  // private createForm(loading) {
-  //   if (true) {
-  //     this.editForm = this.fb.group({
-  //       dueDate: [this.incident.dueDate, [Validators.required, CustomValidators.dueDateValidator]],
-  //       assignee: [this.incident.assignee],
-  //       description: [this.incident.description, Validators.required],
-  //       status: [this.incident.status, Validators.required],
-  //       icon: [this.incident.icon]
-  //     });
-  //     this.loading = true;
-  //     return Promise.resolve(loading);
-  //   } else {
-  //     this.loading = false;
-  //     Promise.reject('Create form error');
-  //   }
-  // }
+
 
   editIncident() {
     if (this.editForm.get('status').value === '') {
@@ -137,6 +94,4 @@ export class IncidentDetailComponent implements OnInit {
     };
     this.store.dispatch(new IncidentActions.UpdateIncident(this.incident));
   }
-
-
 }
