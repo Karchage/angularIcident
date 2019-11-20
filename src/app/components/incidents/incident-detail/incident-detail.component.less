@@ -1,32 +1,87 @@
 @import "~src/color";
-
-
-form {
-  margin: 25px;
-  padding: 1rem;
+form{
   position: relative;
-  min-width: 50vh;
-  max-width: 80vh;
-  border: 1px @color-balance solid;
-  border-radius: 25px;
-  box-sizing: border-box;
+  max-width: calc(60vw - 1rem);
   left:50%;
-  transform: translate(-50%,0);
+  transform: translate(-50% , 5%);
+  padding: 1rem;
+  border-radius: 20px;
+  border: 1px @color-dark solid;
+  background: @color-light;
+  top: 25%;
 }
 .wrapper{
-
-  margin-bottom: 0.5rem;
-  align-items: center;
-  border-bottom: 1px @color-balance solid;
-  box-sizing: border-box;
-
-  input, div,
-  select{
-    padding: 0.4rem;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 1vh;
+  label{
+    width: 30%;
   }
-  input{
-    margin-bottom: 0.4rem;
+  & > input{
+    width: calc(70% - 1rem);
+  }
+  .secondWrapper{
+    display: flex;
+    width: calc(70% - 1rem);
+    div,input{
+      width: 50%;
+    }
   }
 
 }
+.btn-wrap{
+  display: flex;
+  justify-content: center;
+  margin: 1vh;
+  padding-top: 1vh;
+  .btn{
+    width: 30%;
+  }
+}
+@media screen and (max-width: 620px) {
+  form{
+    max-width: calc(90% - 2rem);
+  }
+  .wrapper{
+    width: calc(100% - 1rem);
+    display: flex;
+    flex-direction: row;
+    align-content: stretch;
+    align-items: baseline;
+    margin: 1vh;
+    border-bottom: 1px solid @color-dark;
+    label{
+      padding: 0.4vh;
+      font-size: 0.9rem;
+      width: 30%;
+      height: 100%;
+    }
+    & > input,div{
+      font-size: 0.8rem;
+      width: 70%;
+      height: 100%;
+      padding: 0.4vh;
+    }
+    div{
+      padding: 0.4vh;
+      height: 100%;
+    }
+    .secondWrapper{
+      padding: 0.4vh;
+      font-size: 0.8rem;
+      display: flex;
+      flex-wrap: wrap;
+      width: 70%;
+      div{
+        padding: 0.4vh;
+        width: 40%;
+      }
+      input{
+        padding: 0.4vh;
+        width: 60%;
+      }
+    }
 
+  }
+}
