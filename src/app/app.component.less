@@ -17,6 +17,12 @@
         height: 100%;
       }
     }
+  label{
+    display: none;
+  }
+  #toggle{
+    display: none;
+  }
     ul{
         display: flex;
         position: relative;
@@ -32,4 +38,40 @@
             }
         }
     }
+}
+@media screen and (max-width: 620px) {
+  .navbar{
+    .logo{
+      margin:auto 2vh;
+
+      img{
+        height: 100%;
+      }
+    }
+    label{
+      display: block;
+      color: @color-light;
+      margin-right: 5vw;
+    }
+    #toggle:checked + ul{
+      display: flex;
+    }
+    ul{
+      z-index: 1000;
+      display: none;
+      background: #f0a5c1;
+      top:100%;
+      width: 90%;
+      flex-direction: column;
+      position: relative;
+      align-items: center;
+      margin: 0;
+      padding: 1vh;
+      border-left: #5e0943 1px solid;
+      list-style: none;
+        a:hover{
+          color:@color-light;
+      }
+    }
+  }
 }
