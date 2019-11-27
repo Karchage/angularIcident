@@ -1,6 +1,3 @@
-.wrapper{
-  min-width: 30rem;
-}
 .backdrop{
   position: fixed;
   top: 0;
@@ -18,5 +15,45 @@
   transform: translate(-50%,-25%);
   padding: 1rem;
   min-width: 50vw;
+}
+.wrapper{
+  box-sizing: border-box;
+  margin: 1vh;
+  display: flex;
+  flex-wrap: wrap;
+  width: calc(100% - 2vh);
+  label{
+    width: 30%;
+  }
+  input{
+    padding: 0.4vh;
+    width: calc(70% - 1vh);
+  }
+  select{
+    margin-top: 1vh;
+    padding: 0.4vh;
+    width: calc(100% - 1vh);
+  }
 
+}
+
+.wrap-btn{
+  box-sizing: border-box;
+  justify-content: center;
+  button{
+    width: 30%;
+    margin: 1rem 1rem 0 1rem;
+  }
+}
+@media screen and (max-width: 620px) {
+  .modal{
+    min-width: 90vw;
+  }
+  .wrap-btn{
+    justify-content: space-between;
+    button{
+      width: 40%;
+      margin: 1vh 1vh 0 1vh;
+    }
+  }
 }

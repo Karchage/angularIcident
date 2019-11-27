@@ -17,7 +17,7 @@
         <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
       </select>
     </div>
-    <div class="wrap-btn">
+    <div class="wrapper wrap-btn">
       <button class="btn" type="submit" [disabled]="addForm.invalid">Create</button>
       <button class="btn" (click)="closeEvent.emit()">Exit</button>
     </div>
