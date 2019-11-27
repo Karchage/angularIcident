@@ -1,9 +1,63 @@
-.wrapper{
-  min-width: 30rem;
+
+.backdrop{
+  position: fixed;
+  top: 0;
+  bottom:0;
+  right: 0;
+  left: 0;
+  background-color: rgba(0,0,0,.3);
 }
-textarea{
-  font-size: 1.2rem;
-  width:30%;
-  padding: 0.4rem;
-  resize: none;
+.modal{
+  font-size: 1rem;
+  background-color: #ebe6d9;
+  position: absolute;
+  left:50%;
+  top: 25%;
+  transform: translate(-50%,-25%);
+  padding: 1rem;
+  min-width: 50vw;
+}
+.wrapper{
+  margin: 1vh;
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  label{
+    width: 30%;
+  }
+
+  input,div,textarea{
+    padding: 0.4vh;
+    width: calc(70% - 1vh);
+  }
+  select{
+    margin-top: 1vh;
+    padding: 0.4vh;
+    width: calc(100% - 1vh);
+  }
+  textarea{
+    resize: none;
+  }
+}
+
+.wrap-btn{
+  box-sizing: border-box;
+  justify-content: center;
+  button{
+    width: 30%;
+    margin: 1rem 1rem 0 1rem;
+  }
+}
+@media screen and (max-width: 620px) {
+  .modal{
+    min-width: 90vw;
+  }
+  .wrap-btn{
+    box-sizing: border-box;
+    justify-content: space-between;
+    button{
+      width: 40%;
+      margin: 1vh 1vh 0 1vh;
+    }
+  }
 }
