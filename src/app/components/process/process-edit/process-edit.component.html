@@ -14,7 +14,7 @@
     <div class="wrapper">
       <label for="Transition">Transition</label>
       <div class="secondWrapper">
-        <textarea name="text" disabled>{{currentProcessLog.transition}}</textarea>
+        <textarea name="text" disabled formControlName="transition"></textarea>
         <select id="Transition" multiple="multiple" formControlName="newTransition">
           <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
         </select>

@@ -24,6 +24,14 @@ export class ProcessEditComponent implements OnInit {
               private store: Store<AppState>) { }
 
   ngOnInit() {
+    this.edit = this.fb.group(
+      {
+        name: ['', Validators.required],
+        color: ['', Validators.required],
+        id: ['', Validators.required],
+        transition: ['', Validators.required],
+        newTransition: ['']
+      });
     this.store.dispatch(new ProcessActions.LoadProcesses());
     this.processes$ = this.store.pipe(select(fromProcesses.getProcesses));
     const process$: Observable<ProcessInterface> = this.store.select(
@@ -32,16 +40,13 @@ export class ProcessEditComponent implements OnInit {
 
     process$.subscribe(currentProcess => {
       if (currentProcess) {
-
         this.currentProcessLog = currentProcess;
-        this.edit = this.fb.group(
-          {
-            name: [currentProcess.name, Validators.required],
-            color: [currentProcess.color, Validators.required],
-            id: [currentProcess.id, Validators.required],
-            transition: [currentProcess.transition, Validators.required],
-            newTransition: ['']
-          });
+        this.edit.patchValue({
+          name: currentProcess.name,
+          color: currentProcess.color,
+          id: currentProcess.id,
+          transition: currentProcess.transition
+        });
       }
     });
   }
