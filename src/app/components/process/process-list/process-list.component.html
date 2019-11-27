@@ -2,38 +2,44 @@
   <button (click)="modal = true" class = "btn">Create new status</button>
 </div>
 <div class = "content">
-<!--  <div class="wrap-process">-->
-<!--    <div class="card" *ngFor="let proc of processes$ | async">-->
-<!--      <div class="font">-->
-<!--        <div>{{proc.name}}</div>-->
-<!--        <div>{{proc.color}}</div>-->
-<!--      </div>-->
-<!--      <div class="back"></div>-->
-<!--    </div>-->
-<!--  </div>-->
-  <table class="content-table">
-    <thead>
-    <tr>
-      <th>Name</th>
-      <th>Color</th>
-      <th>Transition</th>
-      <th>Action</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let proc of processes$ | async">
-      <td>{{proc.name}}</td>
-      <td>{{proc.color}}</td>
-      <td><li style="color:red; list-style: none" *ngFor="let rul of proc.transition">{{rul}}</li></td>
-      <td>
-        <ul>
-        <li><a (click)="editProcess(proc);modalEdit = true ">Edit</a></li>
-          <li><a (click)="deleteProcess(proc)">Delete</a></li>
-      </ul>
-      </td>
-    </tr>
-    </tbody>
-  </table>
+  <div class="wrap-process">
+    <div class="card-process" *ngFor="let proc of processes$ | async">
+      <div class="front-process">
+        <div class="wrap-name">{{proc.name}}</div>
+        <div class="wrap-color" [ngStyle]="{background: proc.color}"></div>
+        <div class="wrap-transition" *ngIf="proc.transition.length > 0, ">Transition:
+        <div>{{proc.transition}}</div>
+        </div>
+      </div>
+      <div class="back-process">
+        <button class="btn" (click)="editProcess(proc);modalEdit = true ">Edit</button>
+        <button class="btn" (click)="deleteProcess(proc)">Delete</button>
+      </div>
+    </div>
+  </div>
+<!--  <table class="content-table">-->
+<!--    <thead>-->
+<!--    <tr>-->
+<!--      <th>Name</th>-->
+<!--      <th>Color</th>-->
+<!--      <th>Transition</th>-->
+<!--      <th>Action</th>-->
+<!--    </tr>-->
+<!--    </thead>-->
+<!--    <tbody>-->
+<!--    <tr *ngFor="let proc of processes$ | async">-->
+<!--      <td>{{proc.name}}</td>-->
+<!--      <td>{{proc.color}}</td>-->
+<!--      <td><li style="color:red; list-style: none" *ngFor="let rul of proc.transition">{{rul}}</li></td>-->
+<!--      <td>-->
+<!--        <ul>-->
+<!--        <li><a (click)="editProcess(proc);modalEdit = true ">Edit</a></li>-->
+<!--          <li><a (click)="deleteProcess(proc)">Delete</a></li>-->
+<!--      </ul>-->
+<!--      </td>-->
+<!--    </tr>-->
+<!--    </tbody>-->
+<!--  </table>-->
 </div>
 <app-process-add *ngIf="modal" (closeEvent)="modal = false"></app-process-add>
 <app-process-edit *ngIf="modalEdit" (closeEvent)="modalEdit = false" (process)="editProcess($event)"></app-process-edit>
