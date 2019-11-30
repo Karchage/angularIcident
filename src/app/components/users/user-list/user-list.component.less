@@ -1,0 +1,59 @@
+@import "~src/color";
+
+.user-cards{
+  display: flex;
+  flex-wrap: wrap;
+
+  margin: 2vh;
+}
+.user-card{
+  display:flex;
+  justify-content: space-between;
+  width: 33vw;
+  flex-direction: column;
+  margin: 1vh;
+  border: 1px solid black;
+  border-radius: 10px;
+  padding: 0.5vh;
+  .user-name{
+    text-align: center;
+    font-size: 1rem;
+    padding-top: 1vh;
+  }
+  .user-id{
+    text-align: left;
+    font-size: 0.7rem;
+    border-bottom: 1px @color-dark solid;
+  }
+  .user-content{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+  }
+  .user-wrap{
+    width: 50%;
+    text-align: center;
+    margin: 0.5vh 0.5vh 0 0;
+    padding: 0 0.5vh;
+    font-size: 0.7rem;
+    &:last-child{
+      border-left: #5e0943 1px solid;
+    }
+  }
+
+  .btn-wrap{
+    display: flex;
+    margin-top: 1vh;
+    justify-content: center;
+    .btn{
+      width: 100%;
+      border-radius: 0 0 10px 10px;
+    }
+  }
+}
+@media screen and (max-width: 620px) {
+  .user-card {
+
+    width: 90vw;
+  }
+}

@@ -1,25 +1,17 @@
 <div class = "content">
-  <table class="content-table">
-    <thead>
-    <tr>
-      <th>#</th>
-      <th>Name</th>
-      <th>DOB</th>
-      <th>Position</th>
-      <th>Actions</th>
-    </tr>
-    </thead>
-    <tbody>
-    <tr *ngFor="let user of users$ | async">
-      <td>{{user.id}}</td>
-      <td>{{user.name}}</td>
-      <td>{{user.DOB | date:'dd/MM/yyyy'}}</td>
-      <td>{{user.position}}</td>
-      <td><ul>
-        <li><a (click)="editUser(user)">Edit</a></li>
-      </ul></td>
-    </tr>
+  <div class="user-cards">
+    <div class="user-card" *ngFor="let user of users$ | async">
+      <div class="user-id">id: {{user.id}}</div>
+      <div class="user-name">{{user.name}}</div>
 
-    </tbody>
-  </table>
+
+      <div class="user-content">
+        <div class="user-wrap">{{user.DOB | date:'dd/MM/yyyy'}}</div>
+        <div class="user-wrap">{{user.position}}</div>
+      </div>
+      <div class="btn-wrap">
+        <button class="btn" (click)="editUser(user)">Edit</button>
+      </div>
+    </div>
+  </div>
 </div>
