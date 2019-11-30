@@ -32,7 +32,7 @@ export class RegisterPageComponent implements OnInit {
       email:  ['', [Validators.required, Validators.email]],
       password:  ['', [Validators.required, Validators.minLength(6)]],
       name: ['', [Validators.required, CustomValidators.checkNumberInName]],
-      DOB: ['', Validators.required, CustomValidators.dueDateValidator],
+      DOB: ['', Validators.required],
       position: ['', Validators.required],
     });
   }
@@ -44,17 +44,18 @@ export class RegisterPageComponent implements OnInit {
       email: this.userRegForm.get('email').value,
       password: this.userRegForm.get('password').value
     };
-    const regUSR: UserInterface = {
+    const newUser: UserInterface = {
+      id: this.userRegForm.get('name').value,
       name: this.userRegForm.get('name').value,
       DOB: this.userRegForm.get('DOB').value,
       position: this.userRegForm.get('position').value,
     };
-    this.auth.regUser(regUser).subscribe(
-      response => {console.log('Reg USR');
-                   regUSR.id = response.localId;
-                   this.store.dispatch(new userActions.CreateUser(regUSR)); });
 
-    this.userRegForm.reset();
+    this.auth.registerUser(regUser).subscribe(
+      response => {
+                   newUser.id = response.localId;
+                   this.store.dispatch(new userActions.CreateUser(newUser));
+                    });
   }
 
 }

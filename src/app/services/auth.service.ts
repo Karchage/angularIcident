@@ -11,8 +11,7 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  regUser(regUser: RegInterface): Observable<RegResponseInterface> {
-
+  registerUser(regUser: RegInterface): Observable<RegResponseInterface> {
     regUser.returnSecureToken = true;
     return this.http.post<RegResponseInterface>(`https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${environment.apiKey}`, regUser);
   }

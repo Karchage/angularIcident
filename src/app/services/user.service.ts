@@ -35,7 +35,6 @@ export class UserService {
   }
 
   createUser(payload: UserInterface): Observable<UserInterface> {
-
     return this.http.patch(`${environment.fbDbUrl}/users/${payload.id}.json`, payload).pipe(
       map((response: ResponseInterface) => {
         return {

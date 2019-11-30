@@ -11,6 +11,8 @@ import { AppComponent } from './app.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 import { RegisterPageComponent } from './components/register-page/register-page.component';
+import {UserEffects} from './store/effects/user.effects';
+import {userReducer} from './store/reducers/user.reducer';
 
 
 
@@ -32,7 +34,9 @@ import { RegisterPageComponent } from './components/register-page/register-page.
     EffectsModule.forRoot([]),
     StoreDevtoolsModule.instrument(),
     HttpClientModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    EffectsModule.forFeature([UserEffects]),
+    StoreModule.forFeature('users', userReducer),
   ],
   providers: [],
   exports: [
