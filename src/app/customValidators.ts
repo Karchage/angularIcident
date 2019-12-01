@@ -13,13 +13,15 @@ export class CustomValidators {
   }
 
   static checkNumberInName(control: FormControl): {[key: string]: boolean} {
-    for (const item of control.value) {
-      if (isNumeric(item)) {
-        return {
-          numberInName: true
-        };
+    if(control.value) {
+      for (const item of control.value) {
+        if (isNumeric(item)) {
+          return {
+            numberInName: true
+          };
+        }
       }
+      return null;
     }
-    return null;
-  }
+    }
 }

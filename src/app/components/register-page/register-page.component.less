@@ -1,6 +1,8 @@
 @import "~src/color";
 form {
   margin: 25px auto;
+  display: flex;
+  flex-direction: column;
   padding: 1rem;
   position: relative;
   border: 1px @color-balance solid;
@@ -18,5 +20,39 @@ form {
   }
   input{
     margin-bottom: 0.4rem;
+  }
+
+}
+.btn{
+  width: 100%;
+  border-radius: 0 0 10px 10px;
+}
+@media screen and (max-width: 620px) {
+  form {
+    margin: 1vh auto;
+    display: flex;
+    flex-direction: column;
+    padding: 1rem;
+    position: relative;
+    border: 1px @color-balance solid;
+    border-radius: 25px;
+    box-sizing: border-box;
+    max-width: 90vw;
+  }
+  .wrapper{
+    margin-bottom: 0.5rem;
+    border-bottom: 1px @color-balance solid;
+    box-sizing: border-box;
+    input, div,
+    select{
+      padding: 0.4rem;
+    }
+    input{
+      margin-bottom: 0.4rem;
+    }
+  }
+  .btn{
+    width: 100%;
+    border-radius: 0 0 10px 10px;
   }
 }

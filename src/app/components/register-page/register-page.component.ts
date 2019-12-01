@@ -31,9 +31,9 @@ export class RegisterPageComponent implements OnInit {
     this.userRegForm = this.fb.group({
       email:  ['', [Validators.required, Validators.email]],
       password:  ['', [Validators.required, Validators.minLength(6)]],
-      name: ['', [Validators.required, CustomValidators.checkNumberInName]],
       DOB: ['', Validators.required],
       position: ['', Validators.required],
+      name: ['', [Validators.required, CustomValidators.checkNumberInName]],
     });
   }
 
@@ -55,7 +55,9 @@ export class RegisterPageComponent implements OnInit {
       response => {
                    newUser.id = response.localId;
                    this.store.dispatch(new userActions.CreateUser(newUser));
+                   this.userRegForm.reset();
                     });
+
   }
 
 }
