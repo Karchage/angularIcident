@@ -9,7 +9,8 @@
 .user-card{
   display:flex;
   justify-content: space-between;
-  width: 33vw;
+  width: calc(100%/3 - 3vh);
+  min-width: 25rem;
   flex-direction: column;
   margin: 1vh;
   border: 1px solid black;
@@ -17,7 +18,7 @@
   padding: 0.5vh;
   .user-name{
     text-align: center;
-    font-size: 1rem;
+    font-size: 1.2rem;
     padding-top: 1vh;
   }
   .user-id{
@@ -35,7 +36,7 @@
     text-align: center;
     margin: 0.5vh 0.5vh 0 0;
     padding: 0 0.5vh;
-    font-size: 0.7rem;
+    font-size: 0.9rem;
     &:last-child{
       border-left: #5e0943 1px solid;
     }
@@ -51,9 +52,16 @@
     }
   }
 }
+
+@media screen and (max-width: 1200px) {
+  .user-cards{
+    justify-content: center;
+  }
+
+}
+
 @media screen and (max-width: 620px) {
   .user-card {
-
     width: 90vw;
   }
 }
