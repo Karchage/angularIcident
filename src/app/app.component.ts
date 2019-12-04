@@ -8,8 +8,5 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'projects';
   burger = false;
-
-  show() {
-    console.log(this.burger)
-  }
+  
 }

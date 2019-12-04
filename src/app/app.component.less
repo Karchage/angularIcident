@@ -20,7 +20,7 @@
   .burger{
     visibility: hidden;
   }
-    ul{
+  .menu{
         display: flex;
         position: relative;
         align-items: center;
@@ -50,20 +50,30 @@
       color: @color-light;
       margin-right: 5vw;
     }
+    .menu{
+      display: none;
+    }
 
-    ul{
+    .burger-menu{
+      display: flex;
+      align-items: center;
+      list-style: none;
       z-index: 1000;
-      background: #f0a5c1;
+      background:@color-standart;
       top:100%;
       width: 90%;
       flex-direction: column;
       position: relative;
-      align-items: center;
       margin: 0;
       padding: 1vh;
-      border-left: #5e0943 1px solid;
+      border-left: @color-dark 1px solid;
+      li{
+        position: relative;
+        margin: 0 1vh;
+        display: block;
         a:hover{
           color:@color-light;
+        }
       }
     }
   }

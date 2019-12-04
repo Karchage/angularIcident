@@ -1,7 +1,13 @@
   <nav class ="navbar">
     <div class ="logo"><img src="../assets/images/logo.png"></div>
     <a class="burger" (click)="burger = !burger" >&#9776;</a>
-    <ul *ngIf="burger != false" (click)="burger = false">
+    <ul class = "menu">
+      <li><a routerLink="/incidents" routerLinkActive="active">Incidents</a></li>
+      <li><a routerLink="/process" routerLinkActive="active">Process</a></li>
+      <li><a routerLink="/users" routerLinkActive="active">Users</a></li>
+      <li><a routerLink="/register" routerLinkActive="active">SignUp</a></li>
+    </ul>
+    <ul class = "burger-menu" *ngIf="burger != false" (click)="burger = false">
       <li><a routerLink="/incidents" routerLinkActive="active">Incidents</a></li>
       <li><a routerLink="/process" routerLinkActive="active">Process</a></li>
       <li><a routerLink="/users" routerLinkActive="active">Users</a></li>
