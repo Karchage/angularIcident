@@ -1,7 +1,7 @@
 <div class = "content">
   <div class = "table-header">
-    <input type="text" placeholder="Find" [(ngModel)]="search">
-    <button (click)="modal = true" class = "btn">Create new incident</button>
+    <input type="text" placeholder="Find" [(ngModel)]="search" >
+    <button (click)="modal = true" class = "btn"><img src="../assets/images/plus-black-symbol.png" alt="" style="width: 1rem; height: 1rem"></button>
   </div>
   <div class="cards">
     <div class = "incident-card" *ngFor="let incident of incidents$ | async | searchIncident:search" (click)="selectIncident(incident.id)">
