@@ -1,3 +1,4 @@
+
 <div class = "top-bar">
   <button (click)="modal = true" class = "btn">Create new status</button>
 </div>
@@ -8,7 +9,7 @@
         <div class="wrap-name">{{proc.name}}</div>
         <div class="wrap-color" [ngStyle]="{background: proc.color}"></div>
         <div class="wrap-transition" *ngIf="proc.transition.length > 0, ">Transition:
-        <div>{{proc.transition}}</div>
+          <div>{{proc.transition}}</div>
         </div>
       </div>
       <div class="back-process">
