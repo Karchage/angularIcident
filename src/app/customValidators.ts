@@ -4,7 +4,8 @@ import {isNumeric} from 'rxjs/internal-compatibility';
 export class CustomValidators {
 
   static dueDateValidator(control: FormControl): {[key: string]: boolean} {
-    if (new Date().toLocaleDateString() > new Date(control.value).toLocaleDateString()) {
+
+    if (new Date() > new Date(control.value) ){
       return {
         dueDateValid: true
       };
