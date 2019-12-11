@@ -3,17 +3,17 @@
   <form [formGroup]="addForm" (submit)="add()">
     <div class="wrapper">
       <label for="name">Name</label>
-      <input id="name" type="text" formControlName="name">
+      <input id="name" type="text" formControlName="name" [ngClass]="{invalid: addForm.get('name').touched && addForm.get('name').invalid}">
     </div>
 
     <div class="wrapper">
       <label for="color">Color</label>
-      <input id = "color" type="color" formControlName="color">
+      <input id = "color" type="color" formControlName="color" [ngClass]="{invalid: addForm.get('color').touched && addForm.get('color').invalid}">
     </div>
 
     <div class="wrapper">
       <label for="transition">Transition</label>
-      <select id="transition" multiple="multiple" formControlName="transition">
+      <select id="transition" multiple="multiple" formControlName="transition" [ngClass]="{invalid: addForm.get('transition').touched && addForm.get('transition').invalid}">
         <option *ngFor="let rul of processes$ | async">{{rul.name}}</option>
       </select>
     </div>

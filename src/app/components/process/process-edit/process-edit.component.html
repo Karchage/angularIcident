@@ -3,12 +3,12 @@
   <form [formGroup]="edit" (submit)="updateProcess()">
     <div class="wrapper">
       <label for="Name">Name</label>
-      <input id="Name" type="text" formControlName="name">
+      <input id="Name" type="text" formControlName="name" [ngClass]="{invalid: edit.get('name').touched && edit.get('name').invalid}">
     </div>
 
     <div class="wrapper">
       <label for="Color">Color</label>
-      <input id = "Color" type="color" formControlName="color">
+      <input id = "Color" type="color" formControlName="color" [ngClass]="{invalid: edit.get('color').touched && edit.get('color').invalid}">
     </div>
 
     <div class="wrapper">

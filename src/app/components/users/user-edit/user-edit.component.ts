@@ -6,6 +6,7 @@ import {Store} from '@ngrx/store';
 import {Observable} from 'rxjs';
 import {UserInterface} from '../../../interfaces/user.interface';
 import {AppState} from '../../../store/state/app.state';
+import {CustomValidators} from '../../../customValidators';
 @Component({
   selector: 'app-user-edit',
   templateUrl: './user-edit.component.html',
@@ -21,10 +22,10 @@ export class UserEditComponent implements OnInit {
   currentUserLog: UserInterface;
   ngOnInit() {
     this.edit = this.fb.group({
-      name: ['', Validators.required],
       DOB: ['', Validators.required],
       id: ['', Validators.required],
-      position: ['', Validators.required]
+      position: ['', Validators.required],
+      name: ['', Validators.compose([Validators.required, CustomValidators.checkNumberInName])]
     });
     const users$: Observable<UserInterface> = this.store.select(
       fromUser.getCurrentUser

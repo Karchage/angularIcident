@@ -34,7 +34,7 @@
   <label for="dueDate">Due Date</label>
     <div class="secondWrapper">
       <div>{{incident.dueDate| date: 'dd-MM-yyyy'}}</div>
-      <input id="dueDate" type="date" formControlName="dueDate" >
+      <input id="dueDate" type="date" formControlName="dueDate" [ngClass]="{invalid: editForm.get('dueDate').touched && editForm.get('dueDate').invalid}">
     </div>
 
   </div>
@@ -42,7 +42,7 @@
 
   <div class="wrapper">
   <label for="description">Description</label>
-  <input id="description" type = "text" formControlName="description">
+  <input id="description" type = "text" formControlName="description" [ngClass]="{invalid: editForm.get('description').touched && editForm.get('description').invalid}">
   </div>
 
   <div class="wrapper">

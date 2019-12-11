@@ -3,7 +3,8 @@
   <form [formGroup]="addForm" (submit)="addNewIncident()">
     <div class="wrapper">
       <label for="name">Name</label>
-      <input type="text" placeholder="Name" formControlName="name" id ='name'>
+      <input type="text" placeholder="Name" formControlName="name" id ='name'
+             [ngClass]="{invalid: addForm.get('name').touched && addForm.get('name').invalid}">
     </div>
 
     <div class="wrapper">
@@ -15,7 +16,7 @@
 
     <div class="wrapper">
     <label for="area">Area</label>
-    <select id="area"  formControlName="area" >
+    <select id="area"  formControlName="area" [ngClass]="{invalid: addForm.get('area').touched && addForm.get('area').invalid}">
       <option>Sales department</option>
       <option>It department</option>
       <option>Cooking department</option>
@@ -25,22 +26,22 @@
 
     <div class="wrapper">
     <label for="nowDate">Now Date</label>
-    <div id = 'nowDate'>{{nowDate | date:'dd.MM.yyyy'}}</div>
+    <div id = 'nowDate' >{{nowDate | date:'dd.MM.yyyy'}}</div>
     </div>
 
     <div class="wrapper">
     <label for="dueDate">Due Date</label>
-    <input type="date"  formControlName="dueDate" id="dueDate">
+    <input type="date"  formControlName="dueDate" id="dueDate"  [ngClass]="{invalid: addForm.get('dueDate').touched && addForm.get('dueDate').invalid}">
     </div>
 
     <div class="wrapper">
     <label for="description">Description</label>
-    <input type="text" placeholder="Description" formControlName="description" id="description">
+    <input type="text" placeholder="Description" formControlName="description" id="description" [ngClass]="{invalid: addForm.get('description').touched && addForm.get('description').invalid}">
     </div>
 
     <div class="wrapper">
     <label for="priority">Priority</label>
-    <select id="priority"  formControlName="priority" >
+    <select id="priority"  formControlName="priority" [ngClass]="{invalid: addForm.get('priority').touched && addForm.get('priority').invalid}">
       <option>Blocker</option>
       <option>Critical</option>
       <option>Major</option>

@@ -1,23 +1,23 @@
 <form [formGroup]="userRegForm" (submit)="RegUsers()">
   <div class="wrapper">
     <label for="email">Email</label>
-    <input id="email" type="text"  formControlName="email">
+    <input id="email" type="text"  formControlName="email" [ngClass]="{invalid: userRegForm.get('email').touched && userRegForm.get('email').invalid}">
   </div>
   <div class="wrapper">
     <label for="password">Password</label>
-    <input id="password" type="text" formControlName="password">
+    <input id="password" type="text" formControlName="password" [ngClass]="{invalid: userRegForm.get('password').touched && userRegForm.get('password').invalid}">
   </div>
   <div class="wrapper">
     <label for="name">Name</label>
-    <input id="name" type="text"  formControlName="name">
+    <input id="name" type="text"  formControlName="name" [ngClass]="{invalid: userRegForm.get('name').touched && userRegForm.get('name').invalid}">
   </div>
   <div class="wrapper">
     <label for="DOB">Date of birthday</label>
-    <input id="DOB" type="date"  formControlName="DOB">
+    <input id="DOB" type="date"  formControlName="DOB" [ngClass]="{invalid: userRegForm.get('DOB').touched && userRegForm.get('DOB').invalid}">
   </div>
   <div class="wrapper">
     <label for="position">Position</label>
-    <input id="position" type="text"  formControlName="position">
+    <input id="position" type="text"  formControlName="position" [ngClass]="{invalid: userRegForm.get('position').touched && userRegForm.get('position').invalid}">
   </div>
   <div class="btn-wrap">
     <button class ="btn" type = "submit" [disabled]="userRegForm.invalid">SignUp</button>

@@ -9,7 +9,7 @@
 body{
     margin: 0;
     font-family: Roboto, serif;
-    font-size: 2vh;
+    font-size: 1rem;
     color: black;
     a{
         cursor: pointer;
@@ -45,124 +45,12 @@ select{
   padding: 0.4vh;
   font-size: 0.9rem;
   border: 1px solid #ccc;
+  &.invalid{
+    border: 1px solid @accentColor;
+  }
 }
 
 
-//
-//.backdrop{
-//  position: fixed;
-//  top: 0;
-//  bottom:0;
-//  right: 0;
-//  left: 0;
-//  background-color: rgba(0,0,0,.3);
-//}
-//.modal{
-//  padding: 1rem;
-//  background-color: #ebe6d9;
-//  position: absolute;
-//  display: flex;
-//  flex-direction: column;
-//  left:50%;
-//  top: 25%;
-//  transform: translate(-50%,-25%);
-//
-//}
-//.wrapper{
-//  max-width: 50rem;
-//  display: flex;
-//  margin: 0.5rem 0;
-//  align-items: center;
-//  label{
-//    width: 25%;
-//  }
-//  input, div,
-//  select{
-//    width:75%;
-//    font-size: 1.2rem;
-//  }
-//  .secondWrapper{
-//    display: flex;
-//    div:first-child,input:first-child{
-//      width:30%;
-//      padding: 0.4rem 0;
-//    ;
-//    }
-//    select{
-//      width:70%;
-//    }
-//  }
-//}
-//.btn-wrap{
-//  border: none;
-//  .btn{
-//    margin-left: 50%;
-//    transform: translate(-50%,0);
-//  }
-//}
-//.wrap-btn{
-//  margin-top: 1rem;
-//  button {
-//    width:50%;
-//  }
-//}
-
-//
-//.content-table{
-//  border-collapse: collapse;
-//  margin: 25px 0px;
-//  margin-left: 25px;
-//  margin-right: 25px;
-//  font-size: 0.9em;
-//  min-width: 400px;
-//  width: calc(100% - 50px);
-//  overflow: hidden;
-//  border-radius: 10px;
-//  thead tr{
-//    background-color: @color-balance;
-//    color: @color-light;
-//    text-align: left;
-//  }
-//  th, td{
-//    padding:12px 15px;
-//  }
-//  tbody tr{
-//    border-bottom: 1px solid #f4709a;
-//  }
-//  ul{
-//    list-style: none;
-//    display: flex;
-//    flex-wrap: wrap;
-//    padding: 0;
-//    margin: 0;
-//    li{
-//      display: block;
-//      background-color: #f0a5c1;
-//      border-radius: 10px;
-//      margin: 5px;
-//      padding: 5px;
-//    }
-//  }
-//}
-//.btn{
-//    display: inline-block;
-//    padding: 0.4rem 1.3rem;
-//    font-size: 0.9rem;
-//    border: none;
-//    cursor: pointer;
-//    transition: opacity 0.2s ease-in;
-//    outline: none;
-//    background: @color-dark;
-//    color: #ebe6d9;
-//    border-radius: 25px;
-//    &:disabled {
-//      cursor: not-allowed;
-//      background: @color-light;
-//      border: 1px @color-dark solid;
-//      color: @color-dark;
-//      box-sizing: border-box;
-//    }
-//}
 
 
 
